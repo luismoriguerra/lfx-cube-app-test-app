@@ -98,5 +98,5 @@ cube(`PullRequests`, {
       sql: `extract(epoch from ${mergedAt}) - extract(epoch from ${createdAt})`,
     },
   },
-  dataSource: `tmp`,
+  // dataSource: `tmp`,
 });

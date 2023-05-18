@@ -17,9 +17,31 @@ cube(`TenantsRepositories`, {
     id
   FROM integrations`,
 
-  joins: {},
+  joins: {
+    Tenants: {
+      sql: `${CUBE.tenantId} = ${Tenants.id}`,
+      relationship: `many_to_one`
+    }
+  },
 
   measures: {},
+
+  preAggregations: {
+    main: {
+      dimensions: [
+        CUBE.tenantId,
+        CUBE.tenant_name,
+        CUBE.repoUrl        
+      ],
+      indexes: {
+        rollup_join_idx: {
+          columns: [
+            TenantsRepositories.repoUrl
+          ]
+        }
+      }
+    },
+  },
 
   dimensions: {
     repoUrl: {
@@ -42,5 +64,10 @@ cube(`TenantsRepositories`, {
       type: `string`,
       primaryKey: true,
     },
+
+    tenant_name: {
+      sql: `${Tenants.name}`,
+      type: `string`
+    }
   },
 });

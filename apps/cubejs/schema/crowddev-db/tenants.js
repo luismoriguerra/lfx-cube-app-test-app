@@ -14,6 +14,23 @@ cube(`Tenants`, {
 
   joins: {},
 
+  preAggregations: {
+    main: {
+      dimensions: [
+        TenantsRepositories.tenantId,
+        CUBE.name,
+        TenantsRepositories.repoUrl        
+      ],
+      indexes: {
+        rollup_join_idx: {
+          columns: [
+            TenantsRepositories.repoUrl
+          ]
+        }
+      }
+    },
+  },
+
   measures: {
     count: {
       type: `count`,

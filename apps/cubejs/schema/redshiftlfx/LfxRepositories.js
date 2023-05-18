@@ -1,3 +1,4 @@
+
 // Copyright The Linux Foundation and each contributor to LFX.
 // SPDX-License-Identifier: MIT
 
@@ -16,9 +17,43 @@ cube(`LfxRepository`, {
     short_name
   FROM repository`,
 
-  joins: {},
+  joins: {
+    TenantsRepositories: {
+      relationship: `one_to_one`,
+      sql: `${CUBE.url} = ${TenantsRepositories.repoUrl}`,
+    }
+  },
 
   measures: {},
+
+  preAggregations: {
+
+    rollup_join_example: {
+      type: `rollupJoin`,
+      dimensions: [
+        LfxRepository.description,
+        TenantsRepositories.tenantId,
+        TenantsRepositories.tenant_name,
+        TenantsRepositories.repoUrl
+      ],
+      rollups: [
+        LfxRepository.main,
+        TenantsRepositories.main
+      ]
+    },
+
+    main: {
+      dimensions: [
+        CUBE.url,
+        CUBE.description
+      ],
+      indexes: {
+        rollup_join_idx: {
+          columns: [CUBE.url]
+        }
+      }
+    }
+  },
 
   dimensions: {
     repositoryId: {
