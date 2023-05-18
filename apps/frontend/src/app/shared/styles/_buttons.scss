@@ -1,0 +1,15 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+.lfx-btn {
+  @apply rounded-md box-border text-center float-right px-4 py-1;
+
+  &.primary {
+    @apply bg-primary text-white;
+  }
+
+  &.white {
+    @apply bg-white border border-solid border-gray;
+  }
+}

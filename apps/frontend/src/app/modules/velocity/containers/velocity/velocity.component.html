@@ -1,0 +1,35 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<div class="min-h-screen relative">
+  <div class="sticky top-20 z-20">
+    <lfx-top-filters [pageTitle]="'VELOCITY'"></lfx-top-filters>
+  </div>
+  <div class="separator mb-4"></div>
+  <div class="content-box my-5">
+    <lfx-performance-metrics></lfx-performance-metrics>
+  </div>
+  <div class="flex flex-row w-full my-6 laptop:gap-4 gap-6">
+    <div class="content-box basis-7/12 p-8">
+      <lfx-lead-time></lfx-lead-time>
+    </div>
+
+    <div class="content-box basis-5/12 p-8">
+      <lfx-lead-time-by-pr *ngIf="leadTimeProgress | async as leadTimeProgressData; else loading" [data]="leadTimeProgressData"></lfx-lead-time-by-pr>
+    </div>
+  </div>
+  <div class="flex flex-row w-full my-6 laptop:gap-4 gap-6">
+    <div class="content-box basis-5/12 p-8">
+      <lfx-review-time-by-pr *ngIf="leadTimeProgress | async as leadTimeProgressData; else loading" [data]="leadTimeProgressData"></lfx-review-time-by-pr>
+    </div>
+    <div class="content-box basis-7/12 p-8">
+      <lfx-average-wait-time></lfx-average-wait-time>
+    </div>
+  </div>
+  <lfx-code-review-engagement></lfx-code-review-engagement>
+</div>
+
+<ng-template #loading>
+  <lfx-loading></lfx-loading>
+</ng-template>

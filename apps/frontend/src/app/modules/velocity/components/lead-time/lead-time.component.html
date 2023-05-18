@@ -1,0 +1,53 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+
+<div>
+  <div class="mb-2 relative">
+    <lfx-calculated-card-header [title]="'LEAD TIME'"></lfx-calculated-card-header>
+    <div class="absolute top-0 right-0 flex justify-between">
+      <lfx-wip></lfx-wip>
+      <lfx-download [title]="'lead-time'" [visualization]="elementRef.nativeElement"></lfx-download>
+    </div>
+  </div>
+  <div class="text-gray-f83 text-tiny mb-3">Time it takes for pull requests to be raised, reviewed, accepted and merged.</div>
+  <div class="text-base mb-4">
+    The pickup time is 72 hours, which is
+
+    <span class="font-bold">11% slower</span>
+    <span class="status-icon"> <fa-icon class="bg-red text-white rounded-md text-lg absolute px-[1px]" [icon]="['fas', 'turtle']"> </fa-icon> </span>
+    <!-- <i class="fas fa-tired"></i> -->
+    compared to the previous period.
+  </div>
+  <div class="w-full py-10 flex laptop:flex-col flex-row">
+    <div class="laptop:border-0 border-r border-dashed border-gray-f83 min-w-[200px] flex items-center">
+      <div>
+        <div class="text-gray-dark text-[20px] font-bold font-sans">6 Days, 4 Hours</div>
+        <div class="text-gray-pale text-sm font-sans">Average Lead Time</div>
+        <div class="text-tiny font-normal text-red">+15%</div>
+      </div>
+    </div>
+    <div class="flex-grow py-8 pl-8 laptop:pl-0">
+      <div class="lead-time-graph">
+        <div *ngFor="let item of leadTimeGraph">
+          <div [class]="'bar ' + item.color"></div>
+          <div class="text-gray-dark text-[20px] font-bold font-sans">{{ item.value }} Hours</div>
+          <div class="text-gray-f83 text-tiny">{{ item.label }}</div>
+        </div>
+      </div>
+
+      <div class="steps">
+        <ng-container *ngFor="let step of steps">
+          <div>
+            {{ step }}
+          </div>
+          <span class="arrows">
+            <span class="line"></span>
+            <i class="fas fa-caret-right text-gray-f83"></i>
+          </span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

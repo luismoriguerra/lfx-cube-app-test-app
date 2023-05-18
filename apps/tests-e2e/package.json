@@ -1,0 +1,21 @@
+{
+  "name": "tests-e2e",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start:e2e": "bash scripts/e2e.sh -m h",
+    "test": "bash scripts/e2e.sh -m h",
+    "test:open": "bash scripts/e2e.sh",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --headless --config video=false,screenshotOnRunFailure=false,watchForFileChanges=false",
+    "percy:open": "percy exec -- cypress open",
+    "percy": "percy exec -- cypress run",
+    "clean": "rm -rf dist .turbo node_modules"
+  },
+  "devDependencies": {
+    "@percy/cli": "^1.23.0",
+    "@percy/cypress": "^3.1.2",
+    "cypress": "^12.9.0"
+  }
+}

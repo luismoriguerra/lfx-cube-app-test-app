@@ -1,0 +1,12 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+
+<div class="h-full w-full relative" [hidden]="isLoading">
+  <div [id]="chartName" class="flex-grow w-full h-full"></div>
+</div>
+
+<ng-container *ngIf="isLoading">
+  <lfx-loading></lfx-loading>
+</ng-container>

@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "johnpapa.angular-essentials",
+    "alexiv.vscode-angular2-files",
+    "stylelint.vscode-stylelint",
+    "streetsidesoftware.code-spell-checker",
+    "angular.ng-template"
+  ]
+}

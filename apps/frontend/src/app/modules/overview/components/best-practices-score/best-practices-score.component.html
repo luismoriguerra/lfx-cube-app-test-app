@@ -1,0 +1,79 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+
+<div *ngIf="bestPracticeDetails | async; else loading">
+  <ng-container *ngIf="bestPracticeData.length > 0">
+    <div class="inline-flex">
+      <div class="p-4 pl-0">
+        <lfx-circle-progress [value]="bestPracticeData[0].globalScore" [color]="getColor(bestPracticeData[0].globalScore)"></lfx-circle-progress>
+      </div>
+
+      <div class="p-4">
+        <lfx-calculated-card-header [title]="'BEST PRACTICES SCORE'"></lfx-calculated-card-header>
+        <div class="font-sans text-tiny text-gray-f83 my-3.5">Standards top projects are using to improve the health of their projects.</div>
+        <div class="font-sans text-base text-gray-dark">
+          Legal <span class="status-icon"><fa-icon class="p-px text-base rounded-md bg-red text-white absolute" [icon]="icons.faGavel"></fa-icon></span>
+          and best practices could use some improvement.
+        </div>
+      </div>
+
+      <div class="absolute right-5 mt-3 text-22 text-gray-aaa">
+        <div class="flex">
+          <lfx-wip class="mt-1.5"></lfx-wip>
+          <lfx-download [title]="'best-practices-score'" [visualization]="elementRef.nativeElement" [cardName]="cardName"></lfx-download>
+        </div>
+
+        <div class="border border-gray mt-4 p-1 w-fit ml-auto">
+          <fa-icon class="cursor-pointer" [matMenuTriggerFor]="bestPracticesScoremenu" [icon]="icons.faMenu"></fa-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="font-sans italic text-tiny text-primary pb-1.5">Learn how to improve the Best Practices Score</div>
+
+    <div class="bg-gray-light" *ngFor="let scores of bestPracticesScores; let i = index">
+      <lfx-best-practices-details
+        [icon]="scores.icon"
+        [value]="getScoreValue(scores.scoreField)"
+        [label]="scores.label"
+        (toggleMetricEmitter)="toggleDetails(i)"
+        [showDetails]="visibleDetailIdx === i"></lfx-best-practices-details>
+      <div class="pt-4 bg-gray-9f9 border border-gray" [hidden]="visibleDetailIdx !== i">
+        <lfx-metric-details [key]="scores.key"></lfx-metric-details>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="overflow-hidden">
+  <button data-html2canvas-ignore class="create-issue-btn">Create Issue</button>
+</div>
+
+<mat-menu #bestPracticesScoremenu="matMenu" xPosition="before">
+  <button mat-menu-item (click)="openGetBadgeDialog()">Get Badge</button>
+  <button mat-menu-item (click)="openEmbedDialog()">Embed Report Summary</button>
+</mat-menu>
+
+<ng-template #popup>
+  <!-- TODO: move this to its own component -->
+  <lfx-dialog-template title="PROJECT BADGE">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab [labelClass]="'badge-tab'" label="Markdown">
+        <lfx-text-copy-block [text]="markdownUrl"></lfx-text-copy-block>
+      </mat-tab>
+      <mat-tab [labelClass]="'badge-tab'" label="AsciDoc">
+        <lfx-text-copy-block [text]="markdownUrl"></lfx-text-copy-block>
+      </mat-tab>
+    </mat-tab-group>
+
+    <div class="actions">
+      <button mat-dialog-close class="font-sans bg-primary text-white rounded-md h-9 w-20 mr-7">Close</button>
+    </div>
+  </lfx-dialog-template>
+</ng-template>
+
+<ng-template #loading>
+  <lfx-loading></lfx-loading>
+</ng-template>

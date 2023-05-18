@@ -1,0 +1,36 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+
+<div class="w-full flex flex-col">
+  <span class="text-sm text-gray-dark font-sans font-semibold mb-4">Build Frequency</span>
+  <div class="mx-[5%] w-[90%] h-[250px]">
+    <lfx-line-chart [config]="buildFrequencyConfig" chartName="BuildFrequencyLineChart"></lfx-line-chart>
+  </div>
+</div>
+
+<div class="w-full relative flex flex-col">
+  <span class="text-sm text-gray-dark font-sans font-semibold mb-4">Pull Request Size Breakdown</span>
+  <div class="mx-[5%] w-[90%] h-[175px]">
+    <lfx-bar-chart [config]="pRSizeBreakDownConfig" chartName="PullRequestSizeBreakdown"></lfx-bar-chart>
+  </div>
+  <ng-container *ngTemplateOutlet="prSizeBreakDownLegendTemplate"></ng-container>
+</div>
+
+<ng-template #prSizeBreakDownLegendTemplate>
+  <div class="flex flex-wrap justify-around w-full top-8 pl-[15%] absolute">
+    <div class="flex items-center text-tiny text-gray-dark" *ngFor="let legend of prSizeBreakDownLegends">
+      <span class="border border-gray font-sans rounded-sm px-2 py-0.5">{{ legend.name }}</span>
+      <span class="font-arial mx-2">{{ legend.percent }}</span>
+      <span
+        class="font-sans text-11"
+        [ngClass]="{
+          'text-green': legend.changeFromPrevious > 0,
+          'text-red': legend.changeFromPrevious <= 0
+        }">
+        {{ (legend.changeFromPrevious > 0 ? '+' : '') + legend.changeFromPrevious + '%' }}
+      </span>
+    </div>
+  </div>
+</ng-template>

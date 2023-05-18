@@ -1,0 +1,15 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+
+<div class="flex justify-between border border-gray">
+  <div class="flex items-center py-5 px-6 text-gray-dark text-lg font-roboto font-bold">{{ title }}</div>
+  <div class="text-gray-dark text-3xl outline-none p-1 cursor-pointer" mat-dialog-close><fa-icon [icon]="faTimes"></fa-icon></div>
+</div>
+<div mat-dialog-content>
+  <ng-content></ng-content>
+</div>
+<div mat-dialog-actions align="end">
+  <ng-content select=".actions"></ng-content>
+</div>

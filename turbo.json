@@ -1,0 +1,35 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build:dev": {
+      "dependsOn": ["^build:dev"],
+      "outputs": ["dist/**"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "lint": {},
+    "start:dev": {},
+    "start:remote": {},
+    "start": {
+      "dependsOn": ["^start"]
+    },
+    "cube": {
+      "dependsOn": ["^start:cube"]
+    },
+    "start:server": {
+      "dependsOn": ["^start:server"],
+      "outputs": ["dist/**"]
+    },
+    "integration:test": {
+      "dependsOn": ["^integration:test"]
+    },
+    "clean": {
+      "dependsOn": ["^clean"]
+    },
+    "dev": {
+      "cache": false
+    }
+  }
+}

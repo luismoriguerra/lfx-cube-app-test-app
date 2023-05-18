@@ -1,0 +1,17 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+
+<fa-icon
+  *ngIf="!isLoading"
+  [icon]="'arrow-to-bottom'"
+  [matMenuTriggerFor]="downloadMenu"
+  data-html2canvas-ignore
+  class="text-black text-xl text-end cursor-pointer hover:text-primary"></fa-icon>
+<mat-menu #downloadMenu="matMenu" xPosition="before">
+  <button mat-menu-item class="!text-tiny !text-gray-dark !font-sans" (click)="downloadPNG()">PNG</button>
+  <button mat-menu-item class="!text-tiny !text-gray-dark !font-sans" (click)="downloadCSV()">CSV</button>
+</mat-menu>
+
+<lfx-loading [minHeight]="20" *ngIf="isLoading"></lfx-loading>

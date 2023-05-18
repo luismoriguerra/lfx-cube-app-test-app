@@ -1,0 +1,17 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+.lfx-radio {
+  @apply border border-solid border-gray checked:bg-white checked:hover:bg-white checked:active:bg-white;
+  @apply checked:focus:bg-white focus:bg-white focus:outline-none focus:ring-0 focus:ring-white;
+  &:checked,
+  &:hover:checked {
+    @apply border border-solid border-gray;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='gray' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+  }
+}
+
+.lfx-checkbox {
+  color: #b0db67;
+}

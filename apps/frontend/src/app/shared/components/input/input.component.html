@@ -1,0 +1,25 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+
+<div class="input-container" [class.hasIcon]="icon !== null" [formGroup]="parent">
+  <label class="block text-gray-700 text-sm font-bold mb-2 w-full" *ngIf="label">{{ label }} <span *ngIf="requiredField" class="required">*</span></label>
+  <div class="relative">
+    <fa-icon class="input-icon" *ngIf="icon" [icon]="icon" size="sm"></fa-icon>
+    <input
+      class="focus:outline-none focus:shadow-outline-none w-full"
+      [type]="type"
+      [pattern]="pattern"
+      [placeholder]="placeholder"
+      [formControlName]="control"
+      (keypress)="keypressed.emit($event)"
+      #input />
+    <fa-icon class="clear-icon" (click)="clearValue()" *ngIf="showClear && hasValue" [icon]="['fas', 'times-circle']" size="sm"></fa-icon>
+  </div>
+  <div class="flex justify-between items-center gap-2" *ngIf="hasError">
+    <div class="text-sm text-red">
+      <span *ngIf="hasError">{{ getErrorMessage }}</span>
+    </div>
+  </div>
+</div>

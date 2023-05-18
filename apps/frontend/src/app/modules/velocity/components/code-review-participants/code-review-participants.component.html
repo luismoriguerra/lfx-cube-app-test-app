@@ -1,0 +1,58 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<br />
+<div class="text-sm font-normal text-gray-dark font-roboto">Pull Request Participants</div>
+<div class="text-tiny text-gray-f83">The number of code reviews performed by contributors.</div>
+
+<lfx-table [tableConfiguration]="tableConfiguration" [maxHeight]="420" [tableRecords]="tableRecords"></lfx-table>
+
+<ng-template #numberTemplate let-element>
+  <span class="block text-tiny text-gray-dark text-center w-full">
+    {{ element.rowData[element.columnConfig.key] | lfxShortNumber }}
+  </span>
+</ng-template>
+
+<ng-template #nameTemplate let-element>
+  <span class="text-tiny text-gray-dark font-normal text-left w-full hover:text-primary">
+    {{ element.rowData[element.columnConfig.key] }}
+  </span>
+</ng-template>
+
+<ng-template #githubNameTemplate let-element>
+  <span class="block text-tiny text-gray-dark font-sans font-bold text-left w-full hover:text-primary">
+    <div class="grid grid-cols-[min-content,1fr] items-center gap-4">
+      <div>
+        <span class="rounded-full w-[32px] h-[32px] grid place-content-center border border-gray-fef bg-white text-gray-dark text-tiny hover:shadow-sm">
+          {{ element.rowData?.name | firstLetters }}
+        </span>
+      </div>
+      <div class="flex flex-wrap flex-1">
+        {{ element.rowData?.githubUsername }}
+      </div>
+    </div>
+  </span>
+</ng-template>
+
+<ng-template #commitsTemplate let-element>
+  <div class="block text-tiny text-gray-dark text-center w-full">
+    <span>
+      {{ element.rowData[element.columnConfig.key].value }}
+    </span>
+    &nbsp;
+    <span
+      [ngClass]="{
+        'text-green': element.rowData[element.columnConfig.key].changeFromPrevious > 0,
+        'text-red': element.rowData[element.columnConfig.key].changeFromPrevious <= 0
+      }">
+      ({{ (element.rowData[element.columnConfig.key].changeFromPrevious > 0 ? '+' : '') + element.rowData[element.columnConfig.key].changeFromPrevious }})
+    </span>
+  </div>
+</ng-template>
+
+<ng-template #totalTemplate let-element>
+  <span class="block text-tiny text-gray-dark text-center w-full">
+    {{ element.rowData[element.columnConfig.key] + '%' }}
+  </span>
+</ng-template>

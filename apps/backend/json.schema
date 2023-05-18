@@ -1,0 +1,443 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "AxisSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "axisType": {
+          "enum": [
+            "category",
+            "date"
+          ],
+          "type": "string"
+        },
+        "field": {
+          "type": "string"
+        },
+        "timeInterval": {
+          "$ref": "#/definitions/ITimeInterval"
+        }
+      },
+      "required": [
+        "field",
+        "axisType"
+      ],
+      "type": "object"
+    },
+    "BarChartConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "barColors": {
+          "additionalProperties": false,
+          "properties": {
+            "colors": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "color": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "items": {
+                      "type": "number"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "value",
+                  "color"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "defaultColor": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "defaultColor",
+            "colors"
+          ],
+          "type": "object"
+        },
+        "barWidth": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "$ref": "#/definitions/Percent"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "direction": {
+          "enum": [
+            "vertical",
+            "horizontal"
+          ],
+          "type": "string"
+        },
+        "height": {
+          "type": "number"
+        },
+        "limit": {
+          "type": "number"
+        },
+        "series": {
+          "items": {
+            "$ref": "#/definitions/ColumnSeriesSettings"
+          },
+          "type": "array"
+        },
+        "showLegend": {
+          "type": "boolean"
+        },
+        "type": {
+          "enum": [
+            "normal",
+            "stacked",
+            "reversedStacked"
+          ],
+          "type": "string"
+        },
+        "xAxis": {
+          "$ref": "#/definitions/AxisSettings"
+        },
+        "yAxisName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "series",
+        "xAxis"
+      ],
+      "type": "object"
+    },
+    "ColumnSeriesSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "categoryXField": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "valueYField": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "valueYField",
+        "categoryXField"
+      ],
+      "type": "object"
+    },
+    "CommonChartConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "height": {
+          "type": "number"
+        },
+        "limit": {
+          "type": "number"
+        },
+        "showLegend": {
+          "type": "boolean"
+        },
+        "yAxisName": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "DateFilterEnum": {
+      "enum": [
+        "3 Months",
+        "6 Months",
+        "12 Months",
+        "2 Years",
+        "All Time"
+      ],
+      "type": "string"
+    },
+    "Filters": {
+      "additionalProperties": false,
+      "properties": {
+        "dateFilters": {
+          "$ref": "#/definitions/DateFilterEnum"
+        },
+        "project": {
+          "$ref": "#/definitions/Project"
+        },
+        "repositories": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "repositoryTags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "dateFilters",
+        "repositories",
+        "repositoryTags"
+      ],
+      "type": "object"
+    },
+    "Foundation": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "logoUrl": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "logoUrl",
+        "name",
+        "slug"
+      ],
+      "type": "object"
+    },
+    "ITimeInterval": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "number"
+        },
+        "timeUnit": {
+          "$ref": "#/definitions/TimeUnit"
+        }
+      },
+      "required": [
+        "timeUnit",
+        "count"
+      ],
+      "type": "object"
+    },
+    "PaginatedResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "Data": {
+          "items": {},
+          "maxItems": 1,
+          "minItems": 1,
+          "type": "array"
+        },
+        "Metadata": {
+          "additionalProperties": false,
+          "properties": {
+            "Offset": {
+              "type": "number"
+            },
+            "PageSize": {
+              "type": "number"
+            },
+            "TotalSize": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "Offset",
+            "PageSize",
+            "TotalSize"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "Data",
+        "Metadata"
+      ],
+      "type": "object"
+    },
+    "Percent": {
+      "additionalProperties": false,
+      "description": "Represents a relative value (percent).\n\nThe Percent object, can be instantiated using two ways:\n\n* Via `new Percent(X)`.\n* Via `am5.percent(X)`.\n\nYou can also use shortcut functions for `0%`, `50%`, and `100%`:\n* `am5.p0`\n* `am5.p50`\n* `am5.p1000`",
+      "type": "object"
+    },
+    "Permission": {
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "type": "object"
+    },
+    "Project": {
+      "additionalProperties": false,
+      "properties": {
+        "categories": {},
+        "commits": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "enabledServices": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "endDate": {
+          "type": "string"
+        },
+        "favorite": {
+          "type": "boolean"
+        },
+        "foundation": {
+          "$ref": "#/definitions/Foundation"
+        },
+        "id": {
+          "type": "string"
+        },
+        "isOnBoarded": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parent": {},
+        "parentSlug": {
+          "type": "string"
+        },
+        "projectLogo": {
+          "type": "string"
+        },
+        "projectType": {},
+        "projects": {
+          "items": {
+            "$ref": "#/definitions/Project"
+          },
+          "type": "array"
+        },
+        "repositories": {
+          "type": "number"
+        },
+        "rootSlug": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "subProjects": {
+          "items": {
+            "$ref": "#/definitions/SubProject"
+          },
+          "type": "array"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "commits",
+        "description",
+        "enabledServices",
+        "favorite",
+        "foundation",
+        "id",
+        "isOnBoarded",
+        "name",
+        "parent",
+        "projectLogo",
+        "projectType",
+        "repositories",
+        "slug",
+        "type"
+      ],
+      "type": "object"
+    },
+    "ProjectLocalTypes": {
+      "additionalProperties": false,
+      "properties": {
+        "commits": {
+          "type": "string"
+        },
+        "favorite": {
+          "type": "boolean"
+        },
+        "repositories": {
+          "type": "number"
+        },
+        "subProjects": {
+          "items": {
+            "$ref": "#/definitions/SubProject"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "favorite",
+        "repositories",
+        "commits"
+      ],
+      "type": "object"
+    },
+    "ServiceHealth": {
+      "additionalProperties": false,
+      "properties": {
+        "DateTime": {
+          "type": "string"
+        },
+        "Status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "DateTime",
+        "Status"
+      ],
+      "type": "object"
+    },
+    "SubProject": {
+      "additionalProperties": false,
+      "properties": {
+        "link": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "link"
+      ],
+      "type": "object"
+    },
+    "TimeUnit": {
+      "enum": [
+        "millisecond",
+        "second",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "year"
+      ],
+      "type": "string"
+    }
+  }
+}

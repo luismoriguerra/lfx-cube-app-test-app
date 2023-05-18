@@ -1,0 +1,40 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<div class="min-h-screen relative">
+  <div class="sticky top-20 z-20">
+    <lfx-top-filters [pageTitle]="'PRODUCTIVITY'"></lfx-top-filters>
+  </div>
+  <div class="separator mb-4"></div>
+
+  <div class="flex flex-row w-full my-6 laptop:gap-4 gap-6">
+    <div class="content-box w-[47%] p-8">
+      <lfx-commits-per-day></lfx-commits-per-day>
+    </div>
+
+    <div class="content-box w-[53%] p-8">
+      <lfx-work-time-distribution></lfx-work-time-distribution>
+    </div>
+  </div>
+
+  <div class="flex laptop:flex-col flex-row w-full my-6 laptop:gap-4 gap-6">
+    <div class="content-box laptop:w-full basis-1/2">
+      <lfx-new-contributors></lfx-new-contributors>
+    </div>
+
+    <div class="content-box laptop:w-full basis-1/2">
+      <lfx-drifting-away-contributors></lfx-drifting-away-contributors>
+    </div>
+  </div>
+
+  <div class="flex laptop:flex-col flex-row w-full my-6 laptop:gap-4 gap-6">
+    <div class="content-box p-8 laptop:w-full w-[53%]">
+      <lfx-engagement-gap></lfx-engagement-gap>
+    </div>
+
+    <div class="content-box laptop:w-full w-[47%] p-8">
+      <lfx-effort-by-pull-request-batch-size></lfx-effort-by-pull-request-batch-size>
+    </div>
+  </div>
+</div>

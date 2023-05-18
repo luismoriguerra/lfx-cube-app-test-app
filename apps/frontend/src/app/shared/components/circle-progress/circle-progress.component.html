@@ -1,0 +1,20 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+<div class="circle-wrap" [style]="{ height: size === '' ? undefined : size, width: size === '' ? undefined : size }">
+  <!-- This circle container is the empty circle (the gray part of the progress) -->
+  <div class="circle">
+    <!-- These masks are what draws the progress -->
+    <div class="mask full" [style]="'transform: rotate(' + maskFullRotation + 'deg);' + maskRect">
+      <div class="fill" [style]="'transform: rotate(' + (flip ? '-' : '') + maskDeg + 'deg);' + progressColor + fillRect"></div>
+    </div>
+    <div class="mask half" [style]="'transform: rotate(' + maskHalfRotation + 'deg);' + maskRect">
+      <div class="fill" [style]="'transform: rotate(' + (flip ? '-' : '') + maskDeg + 'deg);' + progressColor + fillRect"></div>
+    </div>
+    <div class="inside-circle" *ngIf="!innerTemplate">{{ value }}%</div>
+    <div class="inside-circle" *ngIf="innerTemplate">
+      <ng-container *ngTemplateOutlet="innerTemplate"> </ng-container>
+    </div>
+  </div>
+</div>

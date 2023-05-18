@@ -1,0 +1,110 @@
+{
+  "queryType": "regularQuery",
+  "results": [
+    {
+      "query": {
+        "segments": [],
+        "filters": [
+          {
+            "operator": "equals",
+            "values": [
+              "a0941000002wBz4AAE"
+            ],
+            "member": "Issues.project_id"
+          }
+        ],
+        "measures": [
+          "Issues.count"
+        ],
+        "dimensions": [
+          "Issues.issue_state"
+        ],
+        "timeDimensions": [
+          {
+            "dimension": "Issues.issue_time",
+            "dateRange": [
+              "2022-04-14T00:00:00.000",
+              "2023-04-14T23:59:59.999"
+            ]
+          }
+        ],
+        "timezone": "UTC",
+        "order": [],
+        "limit": 10000,
+        "queryType": "regularQuery"
+      },
+      "data": [
+        {
+          "Issues.issue_state": "closed",
+          "Issues.count": "5206"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.count": "1585"
+        }
+      ],
+      "lastRefreshTime": "2023-04-04T13:22:48.000Z",
+      "annotation": {
+        "measures": {
+          "Issues.count": {
+            "title": "Issues Count",
+            "shortTitle": "Count",
+            "type": "number",
+            "drillMembers": [],
+            "drillMembersGrouped": {
+              "measures": [],
+              "dimensions": []
+            }
+          }
+        },
+        "dimensions": {
+          "Issues.issue_state": {
+            "title": "Issues Issue State",
+            "shortTitle": "Issue State",
+            "type": "string"
+          }
+        },
+        "segments": {},
+        "timeDimensions": {}
+      },
+      "dataSource": "redshiftlfx",
+      "dbType": "redshift",
+      "extDbType": "cubestore",
+      "external": true,
+      "slowQuery": false,
+      "total": null
+    }
+  ],
+  "pivotQuery": {
+    "segments": [],
+    "filters": [
+      {
+        "operator": "equals",
+        "values": [
+          "a0941000002wBz4AAE"
+        ],
+        "member": "Issues.project_id"
+      }
+    ],
+    "measures": [
+      "Issues.count"
+    ],
+    "dimensions": [
+      "Issues.issue_state"
+    ],
+    "timeDimensions": [
+      {
+        "dimension": "Issues.issue_time",
+        "dateRange": [
+          "2022-04-14T00:00:00.000",
+          "2023-04-14T23:59:59.999"
+        ]
+      }
+    ],
+    "timezone": "UTC",
+    "order": [],
+    "limit": 10000,
+    "queryType": "regularQuery"
+  },
+  "slowQuery": false
+}

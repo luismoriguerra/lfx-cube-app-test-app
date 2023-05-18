@@ -1,0 +1,24 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+
+.legend-icon {
+  @apply relative w-[30px] h-[14px] block;
+  .circle {
+    @apply h-[14px] w-[14px] block border-2 border-solid rounded-full absolute bg-white z-10;
+  }
+  .line {
+    @apply border-2 border-solid border-x-0 border-b-0 w-[30px] absolute z-0 top-[6px] -left-[8px];
+  }
+}
+
+::ng-deep .am5-modal {
+  z-index: 10 !important;
+  .am5-modal-curtain {
+    @apply z-[8];
+  }
+  .am5-modal-wrapper {
+    @apply z-[9];
+  }
+}

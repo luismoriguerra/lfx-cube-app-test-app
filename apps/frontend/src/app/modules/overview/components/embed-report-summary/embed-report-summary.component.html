@@ -1,0 +1,46 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+
+<lfx-dialog-template title="EMBED REPORT SUMMARY">
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab [labelClass]="'badge-tab'" label="Markdown">
+      <lfx-text-copy-block [text]="blocks.markdown"></lfx-text-copy-block>
+    </mat-tab>
+    <mat-tab [labelClass]="'badge-tab'" label="AsciDoc">
+      <lfx-text-copy-block [text]="blocks.asciDoc"></lfx-text-copy-block>
+    </mat-tab>
+    <mat-tab [labelClass]="'badge-tab'" label="HTML">
+      <lfx-text-copy-block [text]="blocks.html"></lfx-text-copy-block>
+    </mat-tab>
+  </mat-tab-group>
+
+  <div>
+    <div class="font-roboto border-b border-solid border-gray my-4">PREVIEW</div>
+    <div class="mx-28">
+      <div class="bg-primary text-white flex p-3 rounded-t font-bold items-center">
+        <img class="mr-2" src="assets/icons/lf-logo.png" />
+        LFX Insights Report
+      </div>
+      <div class="flex border-t-0 border border-solid border-gray rounded-b">
+        <div class="basis-4/12 flex justify-center items-center">
+          <lfx-circle-progress [value]="bestPracticeData[0].globalScore" [color]="getColor(bestPracticeData[0].globalScore)"></lfx-circle-progress>
+        </div>
+        <div class="basis-8/12 p-4">
+          <div *ngFor="let scores of bestPracticesScores; let i = index" [class.bg-gray-light]="i % 2 === 1">
+            <lfx-best-practices-details
+              [icon]="scores.icon"
+              [value]="getScoreValue(scores.scoreField)"
+              [embedMode]="true"
+              [label]="scores.label"></lfx-best-practices-details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button mat-dialog-close class="font-sans bg-primary text-white rounded-md h-9 w-20 mr-7">Close</button>
+  </div>
+</lfx-dialog-template>

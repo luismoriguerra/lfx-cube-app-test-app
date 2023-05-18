@@ -1,0 +1,36 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+
+$width: 100px;
+
+.circle-wrap {
+  @apply w-100 h-100 relative bg-gray rounded-full;
+  height: $width;
+  width: $width;
+
+  .circle {
+    .mask,
+    .fill {
+      @apply h-full w-full absolute rounded-full;
+    }
+
+    .mask.full,
+    .fill {
+      transition: transform ease-in-out 2s;
+    }
+
+    .mask {
+      clip: rect(0px, $width, $width, calc($width / 2));
+      .fill {
+        clip: rect(0px, calc($width / 2), $width, 0px);
+        background-color: #227ded;
+      }
+    }
+  }
+
+  .inside-circle {
+    @apply h-[90%] w-[90%] mt-[5%] ml-[5%] font-bold text-[28px] absolute rounded-full bg-gray-9f9 flex items-center justify-center z-10;
+  }
+}

@@ -1,0 +1,121 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+<ng-container *ngIf="!isLoading; else loading">
+  <div class="flex w-full justify-between p-[30px] pb-0">
+    <div class="pr-0 pb-2.5">
+      <lfx-calculated-card-header [title]="'CONTRIBUTOR DEPENDENCY'" [tooltipTemplate]="tooltipTemplate"></lfx-calculated-card-header>
+      <div class="font-sans text-tiny text-gray-f83 my-3.5">
+        The risk level based on the total percentage of the selected contribution activity divided by the total contributors.
+      </div>
+      <!-- <div class="font-sans text-17 text-gray-dark">
+        <span class="font-bold"> {{ tableData.length }} contributors </span>
+        who represent {{ getPercentageOfTop() }}% of all of your technical contributors, are responsible for
+        <span class="font-bold">{{ topPercentage }}% of your {{ selectedMetric.toLowerCase() }}</span>
+        <span class="status-icon"> <fa-icon class="bg-orange text-white rounded-md text-lg absolute px-[1px]" [icon]="['far', 'code']"> </fa-icon> </span>.
+      </div> -->
+    </div>
+
+    <div class="flex flex-col justify-between">
+      <lfx-download [title]="cardName" [cardName]="cardName" [visualization]="elementRef.nativeElement"></lfx-download>
+    </div>
+  </div>
+  <div class="flex items-center justify-end pr-[30px]" data-html2canvas-ignore>
+    <div class="flex flex-col w-[230px]">
+      <span class="text-tiny text-gray-dark font-semibold pb-1"> Metric</span>
+      <ng-select
+        [items]="metrics"
+        [(ngModel)]="selectedMetric"
+        [virtualScroll]="true"
+        [clearable]="false"
+        [searchable]="false"
+        class="custom-ng-select w-[230px]"
+        (change)="onSelectChange($event)">
+      </ng-select>
+    </div>
+  </div>
+
+  <div class="flex flex-col mt-5 p-[30px] pt-0" *ngIf="!isPartialLoading; else loading" #dependencyChart>
+    <!-- <lfx-gauge-chart class="w-full" [config]="config" [chartName]="chartName"></lfx-gauge-chart> -->
+    <div class="w-full flex flex-row gap-4 justify-center" *ngIf="tableData.length > 0; else nodata">
+      <div class="basis-3/12 flex flex-col items-end pt-12">
+        <span class="font-sans font-bold text-3xl">{{ tableData.length }}</span>
+        <div class="font-sans text-tiny text-gray-f83 font-normal text-right pl-6">
+          Contributor{{ tableData.length > 1 ? 's' : '' }} ({{ topPercentage }}% of code contributions)
+        </div>
+      </div>
+      <div class="basis-5/12 max-w-[220px]">
+        <lfx-circle-progress
+          [value]="topPercentage"
+          [color]="getColor(topPercentage)"
+          size="220px"
+          [flip]="true"
+          [innerTemplate]="dependencyCircle"></lfx-circle-progress>
+      </div>
+      <div class="basis-3/12 flex flex-col pt-12">
+        <span class="font-sans font-bold text-3xl">{{ codeDependencyData.length - tableData.length }}</span>
+        <div class="font-sans text-tiny text-gray-f83 font-normal pr-6">
+          Contributor{{ codeDependencyData.length - tableData.length > 1 ? 's' : '' }} ({{ 100 - topPercentage }}% of code contributions)
+        </div>
+      </div>
+    </div>
+    <lfx-table [tableConfiguration]="tableConfiguration" [maxHeight]="240" [tableRecords]="tableDataFullList"></lfx-table>
+  </div>
+</ng-container>
+
+<ng-template #tooltipTemplate>
+  <div class="absolute bottom-[120%] left-[40%] font-sans rounded-md bg-gray-dark text-xs text-white w-[266px] p-4 laptop:left-[30%]">
+    Calculated using the CHAOSS metric for Contributors.
+    <a class="hover:underline text-primary" href="https://chaoss.community/kb/metric-contributors/">Learn More</a>
+  </div>
+</ng-template>
+
+<ng-template #numberTemplate let-element>
+  <span class="block text-tiny text-gray-dark text-center w-full">
+    {{ element.rowData[element.columnConfig.key] | lfxShortNumber }}
+  </span>
+</ng-template>
+
+<ng-template #githubNameTemplate let-element>
+  <div class="block text-tiny text-gray-dark font-sans font-bold text-left w-full hover:text-primary flex items-center gap-2">
+    <span>
+      <ngx-avatar [src]="element.rowData?.logoUrl" [name]="element.rowData?.githubUsername" [initialsSize]="1" [size]="32" [textSizeRatio]="2"></ngx-avatar>
+    </span>
+    <span>{{ element.rowData?.githubUsername }}</span>
+  </div>
+</ng-template>
+
+<ng-template #contributionsTemplate let-element>
+  <div class="block text-tiny text-gray-dark text-center w-full">
+    <span>
+      {{ element.rowData[element.columnConfig.key].value + ' (' + element.rowData[element.columnConfig.key].percent + '%) ' }}
+    </span>
+    <span
+      [ngClass]="{
+        'text-green': element.rowData[element.columnConfig.key].changeFromPrevious > 0,
+        'text-red': element.rowData[element.columnConfig.key].changeFromPrevious <= 0
+      }">
+      ({{ (element.rowData[element.columnConfig.key].changeFromPrevious > 0 ? '+' : '') + element.rowData[element.columnConfig.key].changeFromPrevious }})
+    </span>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <lfx-loading></lfx-loading>
+</ng-template>
+
+<ng-template #dependencyCircle>
+  <div class="text-center px-4">
+    <div class="font-sans text-tiny text-gray-f83 font-normal">Your contributor dependency is</div>
+    <div class="-mt-[5px]" [style]="'color: ' + getColor(topPercentage)">
+      {{ topPercentage >= 50 ? 'HIGH' : 'LOW' }}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #nodata>
+  <div class="w-full flex flex-row gap-4 justify-center">
+    <div class="text-[20px] font-bold text-black flex h-full w-full items-center justify-center min-h-[180px] ng-star-inserted">No data to display</div>
+  </div>
+</ng-template>

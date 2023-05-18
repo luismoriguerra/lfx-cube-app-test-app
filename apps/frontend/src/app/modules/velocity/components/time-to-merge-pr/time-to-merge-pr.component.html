@@ -1,0 +1,45 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<div class="w-full flex flex-col h-full">
+  <span class="text-sm text-gray-dark font-sans font-semibold mb-4">Time To Merge (Pull Requests)</span>
+  <div class="h-full">
+    <lfx-bar-chart [config]="config" chartName="TimeToMergePR"></lfx-bar-chart>
+  </div>
+</div>
+
+<!-- TODO: Removed temporally for Demo 03/23 -->
+<!-- <div class="w-full flex flex-col">
+  <span class="text-sm text-gray-dark font-sans font-semibold mb-4">Lead Time Breakdown</span>
+  <div class="mx-[5%] w-[90%] flex flex-row justify-between">
+    <span class="!flex-grow-[0.4] arrows">
+      <span class="line"></span>
+      <i class="fas fa-caret-right text-gray-f83"></i>
+    </span>
+    <ng-container *ngFor="let step of steps">
+      <div class="relative">
+        <img *ngIf="step.svgIcon" class="mx-2 w-4 h-4" [src]="step.svgIcon" />
+        <i *ngIf="step.icon" [class]="step.icon + ' text-gray-979 text-sm mx-2'"></i>
+        <div class="absolute left-full">
+          <span class="text-gray-pale text-xs mb-1.5">{{ step.title }}</span>
+          <span class="text-gray-dark text-xs font-sansBold font-bold whitespace-nowrap">
+            {{ step.value }}
+            <span
+              class="text-11 font-sans font-normal ml-1"
+              [ngClass]="{
+                'text-green': step.percent > 0,
+                'text-red': step.percent <= 0
+              }"
+              >{{ (step.percent > 0 ? '+' : '') + step.percent + '%' }}</span
+            >
+          </span>
+        </div>
+      </div>
+      <span class="arrows">
+        <span class="line"></span>
+        <i class="fas fa-caret-right text-gray-f83"></i>
+      </span>
+    </ng-container>
+  </div>
+</div> -->

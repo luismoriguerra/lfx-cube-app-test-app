@@ -1,0 +1,25 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+
+<!-- TODO: refactor this once we know the final menus based on the logged in user -->
+<div class="side-menu relative" [ngClass]="{ 'w-[225px]': !isCollapsed, 'w-[70px]': isCollapsed }">
+  <div *ngFor="let menu of menuItems; let i = index" class="menu-item" [class.active]="activeIdx === i" (click)="activeIdx = i" [routerLink]="menu.url">
+    <fa-icon [icon]="activeIdx === i ? menu.activeIcon : menu.icon" size="sm"></fa-icon>
+    <span *ngIf="!isCollapsed">
+      {{ menu.name }}
+    </span>
+  </div>
+
+  <hr />
+
+  <div class="menu-item" [class.active]="activeIdx === 4" (click)="activeIdx = 4">
+    <fa-icon [icon]="[activeIdx === 4 ? 'fas' : 'far', 'globe']" size="sm"></fa-icon>
+    <span *ngIf="!isCollapsed"> Back to Global Insights </span>
+  </div>
+  <i
+    class="far absolute right-0 bottom-1/2 text-sm text-white-pale rounded-md bg-gray-979 py-2.5 p-2 cursor-pointer"
+    [ngClass]="{ 'fa-chevron-double-right': isCollapsed, 'fa-chevron-double-left': !isCollapsed }"
+    (click)="toggleMenu()"></i>
+</div>

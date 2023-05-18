@@ -1,0 +1,58 @@
+---
+# Copyright The Linux Foundation and each contributor to LFX.
+# SPDX-License-Identifier: MIT
+
+name: Snyk Scan Docker
+
+on:
+  workflow_run:
+    workflows: [Deploy Development]
+    types: [completed]
+
+env:
+  STAGE: dev
+  AWS_REGION: us-east-2
+  AWS_ECR_REGION: us-east-2
+  REPOSITORY: lfx-insights-ui
+  ECR_HOST: ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.us-east-2.amazonaws.com
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: dev
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Available Build Platforms
+        run: echo ${{ steps.buildx.outputs.platforms }}
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+          role-duration-seconds: 900
+      - name: Pull Image
+        run: |
+          aws ecr get-login-password --region ${AWS_ECR_REGION} | docker login --username AWS --password-stdin ${ECR_HOST}
+          docker pull ${ECR_HOST}/${REPOSITORY}:${{github.sha}}
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: container
+          args: test ${ECR_HOST}/${REPOSITORY}:${{github.sha}} --org=${{ secrets.SNYK_ORG }} --file=Dockerfile
+      - name: Run Snyk to upload vulnerabilities
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: container
+          args: monitor ${ECR_HOST}/${REPOSITORY}:${{github.sha}} --org=${{ secrets.SNYK_ORG }} --file=Dockerfile

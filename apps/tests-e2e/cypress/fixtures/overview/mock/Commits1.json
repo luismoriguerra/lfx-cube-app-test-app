@@ -1,0 +1,118 @@
+{
+  "queryType": "regularQuery",
+  "results": [
+    {
+      "query": {
+        "segments": [
+          "Commits.non_bots"
+        ],
+        "filters": [
+          {
+            "operator": "equals",
+            "values": [
+              "a0941000002wBz4AAE"
+            ],
+            "member": "Commits.project_id"
+          }
+        ],
+        "measures": [
+          "Commits.commits_count"
+        ],
+        "timeDimensions": [
+          {
+            "dimension": "Commits.commit_time",
+            "dateRange": [
+              "2022-04-14T00:00:00.000",
+              "2023-04-14T23:59:59.999"
+            ]
+          }
+        ],
+        "timezone": "UTC",
+        "order": [],
+        "dimensions": [],
+        "limit": 10000,
+        "queryType": "regularQuery"
+      },
+      "data": [
+        {
+          "Commits.commits_count": "6466"
+        }
+      ],
+      "lastRefreshTime": "2023-04-14T01:43:05.757Z",
+      "annotation": {
+        "measures": {
+          "Commits.commits_count": {
+            "title": "Commits Commits Count",
+            "shortTitle": "Commits Count",
+            "type": "number",
+            "drillMembers": [
+              "Commits.commit_sha",
+              "Commits.project_name",
+              "Commits.repository_url",
+              "Commits.role",
+              "Commits.is_bot",
+              "Commits.commit_time"
+            ],
+            "drillMembersGrouped": {
+              "measures": [],
+              "dimensions": [
+                "Commits.commit_sha",
+                "Commits.project_name",
+                "Commits.repository_url",
+                "Commits.role",
+                "Commits.is_bot",
+                "Commits.commit_time"
+              ]
+            }
+          }
+        },
+        "dimensions": {},
+        "segments": {
+          "Commits.non_bots": {
+            "title": "Commits Non Bots",
+            "shortTitle": "Non Bots"
+          }
+        },
+        "timeDimensions": {}
+      },
+      "dataSource": "redshiftlfx",
+      "dbType": "redshift",
+      "extDbType": "cubestore",
+      "external": false,
+      "slowQuery": false,
+      "total": null
+    }
+  ],
+  "pivotQuery": {
+    "segments": [
+      "Commits.non_bots"
+    ],
+    "filters": [
+      {
+        "operator": "equals",
+        "values": [
+          "a0941000002wBz4AAE"
+        ],
+        "member": "Commits.project_id"
+      }
+    ],
+    "measures": [
+      "Commits.commits_count"
+    ],
+    "timeDimensions": [
+      {
+        "dimension": "Commits.commit_time",
+        "dateRange": [
+          "2022-04-14T00:00:00.000",
+          "2023-04-14T23:59:59.999"
+        ]
+      }
+    ],
+    "timezone": "UTC",
+    "order": [],
+    "dimensions": [],
+    "limit": 10000,
+    "queryType": "regularQuery"
+  },
+  "slowQuery": false
+}

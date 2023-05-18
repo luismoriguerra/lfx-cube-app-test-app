@@ -1,0 +1,1128 @@
+{
+  "queryType": "regularQuery",
+  "results": [
+    {
+      "query": {
+        "segments": [
+          "CodeChangeSets.github_prs",
+          "CodeChangeSets.non_bots"
+        ],
+        "filters": [
+          {
+            "operator": "equals",
+            "values": [
+              "a0941000002wBz4AAE"
+            ],
+            "member": "CodeChangeSets.project_id"
+          }
+        ],
+        "measures": [
+          "CodeChangeSets.prs_count"
+        ],
+        "dimensions": [
+          "CodeChangeSets.action"
+        ],
+        "timeDimensions": [
+          {
+            "dimension": "CodeChangeSets.pr_time",
+            "dateRange": [
+              "2022-04-14T00:00:00.000",
+              "2023-04-14T23:59:59.999"
+            ],
+            "granularity": "week"
+          }
+        ],
+        "order": [
+          {
+            "id": "CodeChangeSets.pr_time",
+            "desc": false
+          }
+        ],
+        "timezone": "UTC",
+        "limit": 10000,
+        "queryType": "regularQuery"
+      },
+      "data": [
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-04-11T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-11T00:00:00.000",
+          "CodeChangeSets.prs_count": "10"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-04-11T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-11T00:00:00.000",
+          "CodeChangeSets.prs_count": "54"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-04-11T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-11T00:00:00.000",
+          "CodeChangeSets.prs_count": "43"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-04-11T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-11T00:00:00.000",
+          "CodeChangeSets.prs_count": "37"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-04-18T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-18T00:00:00.000",
+          "CodeChangeSets.prs_count": "81"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-04-18T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-18T00:00:00.000",
+          "CodeChangeSets.prs_count": "10"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-04-18T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-18T00:00:00.000",
+          "CodeChangeSets.prs_count": "67"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-04-18T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-18T00:00:00.000",
+          "CodeChangeSets.prs_count": "70"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-04-25T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-25T00:00:00.000",
+          "CodeChangeSets.prs_count": "81"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-04-25T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-25T00:00:00.000",
+          "CodeChangeSets.prs_count": "107"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-04-25T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-25T00:00:00.000",
+          "CodeChangeSets.prs_count": "11"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-04-25T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-04-25T00:00:00.000",
+          "CodeChangeSets.prs_count": "93"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-05-02T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-02T00:00:00.000",
+          "CodeChangeSets.prs_count": "85"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-05-02T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-02T00:00:00.000",
+          "CodeChangeSets.prs_count": "90"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-05-02T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-02T00:00:00.000",
+          "CodeChangeSets.prs_count": "105"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-05-02T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-02T00:00:00.000",
+          "CodeChangeSets.prs_count": "17"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-05-09T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-09T00:00:00.000",
+          "CodeChangeSets.prs_count": "12"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-05-09T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-09T00:00:00.000",
+          "CodeChangeSets.prs_count": "92"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-05-09T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-09T00:00:00.000",
+          "CodeChangeSets.prs_count": "92"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-05-09T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-09T00:00:00.000",
+          "CodeChangeSets.prs_count": "76"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-05-16T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-16T00:00:00.000",
+          "CodeChangeSets.prs_count": "41"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-05-16T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-16T00:00:00.000",
+          "CodeChangeSets.prs_count": "37"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-05-16T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-16T00:00:00.000",
+          "CodeChangeSets.prs_count": "48"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-05-16T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-16T00:00:00.000",
+          "CodeChangeSets.prs_count": "6"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-05-23T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-23T00:00:00.000",
+          "CodeChangeSets.prs_count": "48"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-05-23T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-23T00:00:00.000",
+          "CodeChangeSets.prs_count": "66"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-05-23T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-23T00:00:00.000",
+          "CodeChangeSets.prs_count": "9"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-05-23T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-23T00:00:00.000",
+          "CodeChangeSets.prs_count": "58"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-05-30T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-30T00:00:00.000",
+          "CodeChangeSets.prs_count": "52"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-05-30T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-30T00:00:00.000",
+          "CodeChangeSets.prs_count": "61"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-05-30T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-30T00:00:00.000",
+          "CodeChangeSets.prs_count": "37"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-05-30T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-05-30T00:00:00.000",
+          "CodeChangeSets.prs_count": "12"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-06-06T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-06T00:00:00.000",
+          "CodeChangeSets.prs_count": "66"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-06-06T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-06T00:00:00.000",
+          "CodeChangeSets.prs_count": "54"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-06-06T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-06T00:00:00.000",
+          "CodeChangeSets.prs_count": "50"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-06-06T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-06T00:00:00.000",
+          "CodeChangeSets.prs_count": "16"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-06-13T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-13T00:00:00.000",
+          "CodeChangeSets.prs_count": "11"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-06-13T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-13T00:00:00.000",
+          "CodeChangeSets.prs_count": "60"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-06-13T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-13T00:00:00.000",
+          "CodeChangeSets.prs_count": "53"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-06-13T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-13T00:00:00.000",
+          "CodeChangeSets.prs_count": "74"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-06-20T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-20T00:00:00.000",
+          "CodeChangeSets.prs_count": "87"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-06-20T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-20T00:00:00.000",
+          "CodeChangeSets.prs_count": "13"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-06-20T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-20T00:00:00.000",
+          "CodeChangeSets.prs_count": "67"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-06-20T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-20T00:00:00.000",
+          "CodeChangeSets.prs_count": "76"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-06-27T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-27T00:00:00.000",
+          "CodeChangeSets.prs_count": "19"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-06-27T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-27T00:00:00.000",
+          "CodeChangeSets.prs_count": "62"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-06-27T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-27T00:00:00.000",
+          "CodeChangeSets.prs_count": "55"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-06-27T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-06-27T00:00:00.000",
+          "CodeChangeSets.prs_count": "82"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-07-04T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-04T00:00:00.000",
+          "CodeChangeSets.prs_count": "75"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-07-04T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-04T00:00:00.000",
+          "CodeChangeSets.prs_count": "70"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-07-04T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-04T00:00:00.000",
+          "CodeChangeSets.prs_count": "63"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-07-04T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-04T00:00:00.000",
+          "CodeChangeSets.prs_count": "14"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-07-11T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-11T00:00:00.000",
+          "CodeChangeSets.prs_count": "64"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-07-11T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-11T00:00:00.000",
+          "CodeChangeSets.prs_count": "13"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-07-11T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-11T00:00:00.000",
+          "CodeChangeSets.prs_count": "77"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-07-11T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-11T00:00:00.000",
+          "CodeChangeSets.prs_count": "55"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-07-18T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-18T00:00:00.000",
+          "CodeChangeSets.prs_count": "10"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-07-18T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-18T00:00:00.000",
+          "CodeChangeSets.prs_count": "56"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-07-18T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-18T00:00:00.000",
+          "CodeChangeSets.prs_count": "67"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-07-18T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-18T00:00:00.000",
+          "CodeChangeSets.prs_count": "63"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-07-25T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-25T00:00:00.000",
+          "CodeChangeSets.prs_count": "72"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-07-25T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-25T00:00:00.000",
+          "CodeChangeSets.prs_count": "14"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-07-25T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-25T00:00:00.000",
+          "CodeChangeSets.prs_count": "59"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-07-25T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-07-25T00:00:00.000",
+          "CodeChangeSets.prs_count": "64"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-08-01T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-01T00:00:00.000",
+          "CodeChangeSets.prs_count": "93"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-08-01T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-01T00:00:00.000",
+          "CodeChangeSets.prs_count": "40"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-08-01T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-01T00:00:00.000",
+          "CodeChangeSets.prs_count": "82"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-08-01T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-01T00:00:00.000",
+          "CodeChangeSets.prs_count": "13"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-08-08T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-08T00:00:00.000",
+          "CodeChangeSets.prs_count": "17"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-08-08T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-08T00:00:00.000",
+          "CodeChangeSets.prs_count": "19"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-08-08T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-08T00:00:00.000",
+          "CodeChangeSets.prs_count": "101"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-08-08T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-08T00:00:00.000",
+          "CodeChangeSets.prs_count": "69"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-08-15T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-15T00:00:00.000",
+          "CodeChangeSets.prs_count": "83"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-08-15T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-15T00:00:00.000",
+          "CodeChangeSets.prs_count": "17"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-08-15T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-15T00:00:00.000",
+          "CodeChangeSets.prs_count": "24"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-08-15T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-15T00:00:00.000",
+          "CodeChangeSets.prs_count": "66"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-08-22T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-22T00:00:00.000",
+          "CodeChangeSets.prs_count": "33"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-08-22T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-22T00:00:00.000",
+          "CodeChangeSets.prs_count": "56"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-08-22T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-22T00:00:00.000",
+          "CodeChangeSets.prs_count": "9"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-08-22T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-22T00:00:00.000",
+          "CodeChangeSets.prs_count": "7"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-08-29T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-29T00:00:00.000",
+          "CodeChangeSets.prs_count": "52"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-08-29T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-29T00:00:00.000",
+          "CodeChangeSets.prs_count": "79"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-08-29T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-29T00:00:00.000",
+          "CodeChangeSets.prs_count": "13"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-08-29T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-08-29T00:00:00.000",
+          "CodeChangeSets.prs_count": "15"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-09-05T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-05T00:00:00.000",
+          "CodeChangeSets.prs_count": "73"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-09-05T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-05T00:00:00.000",
+          "CodeChangeSets.prs_count": "72"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-09-05T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-05T00:00:00.000",
+          "CodeChangeSets.prs_count": "29"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-09-05T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-05T00:00:00.000",
+          "CodeChangeSets.prs_count": "15"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-09-12T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-12T00:00:00.000",
+          "CodeChangeSets.prs_count": "14"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-09-12T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-12T00:00:00.000",
+          "CodeChangeSets.prs_count": "76"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-09-12T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-12T00:00:00.000",
+          "CodeChangeSets.prs_count": "63"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-09-12T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-12T00:00:00.000",
+          "CodeChangeSets.prs_count": "20"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-09-19T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-19T00:00:00.000",
+          "CodeChangeSets.prs_count": "89"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-09-19T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-19T00:00:00.000",
+          "CodeChangeSets.prs_count": "33"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-09-19T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-19T00:00:00.000",
+          "CodeChangeSets.prs_count": "12"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-09-19T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-19T00:00:00.000",
+          "CodeChangeSets.prs_count": "93"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-09-26T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-26T00:00:00.000",
+          "CodeChangeSets.prs_count": "68"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-09-26T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-26T00:00:00.000",
+          "CodeChangeSets.prs_count": "85"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-09-26T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-26T00:00:00.000",
+          "CodeChangeSets.prs_count": "35"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-09-26T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-09-26T00:00:00.000",
+          "CodeChangeSets.prs_count": "10"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-10-03T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-03T00:00:00.000",
+          "CodeChangeSets.prs_count": "1"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-10-03T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-03T00:00:00.000",
+          "CodeChangeSets.prs_count": "74"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-10-03T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-03T00:00:00.000",
+          "CodeChangeSets.prs_count": "26"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-10-03T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-03T00:00:00.000",
+          "CodeChangeSets.prs_count": "3"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-10-10T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-10T00:00:00.000",
+          "CodeChangeSets.prs_count": "13"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-10-10T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-10T00:00:00.000",
+          "CodeChangeSets.prs_count": "66"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-10-10T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-10T00:00:00.000",
+          "CodeChangeSets.prs_count": "24"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-10-10T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-10T00:00:00.000",
+          "CodeChangeSets.prs_count": "8"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-10-17T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-17T00:00:00.000",
+          "CodeChangeSets.prs_count": "35"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-10-17T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-17T00:00:00.000",
+          "CodeChangeSets.prs_count": "16"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-10-17T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-17T00:00:00.000",
+          "CodeChangeSets.prs_count": "73"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-10-17T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-17T00:00:00.000",
+          "CodeChangeSets.prs_count": "52"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-10-24T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-24T00:00:00.000",
+          "CodeChangeSets.prs_count": "66"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-10-24T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-24T00:00:00.000",
+          "CodeChangeSets.prs_count": "39"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-10-24T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-24T00:00:00.000",
+          "CodeChangeSets.prs_count": "31"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-10-24T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-24T00:00:00.000",
+          "CodeChangeSets.prs_count": "11"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-10-31T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-31T00:00:00.000",
+          "CodeChangeSets.prs_count": "71"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-10-31T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-31T00:00:00.000",
+          "CodeChangeSets.prs_count": "6"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-10-31T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-31T00:00:00.000",
+          "CodeChangeSets.prs_count": "75"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-10-31T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-10-31T00:00:00.000",
+          "CodeChangeSets.prs_count": "47"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-11-07T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-07T00:00:00.000",
+          "CodeChangeSets.prs_count": "36"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-11-07T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-07T00:00:00.000",
+          "CodeChangeSets.prs_count": "50"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-11-07T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-07T00:00:00.000",
+          "CodeChangeSets.prs_count": "65"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-11-07T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-07T00:00:00.000",
+          "CodeChangeSets.prs_count": "19"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-11-14T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-14T00:00:00.000",
+          "CodeChangeSets.prs_count": "38"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-11-14T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-14T00:00:00.000",
+          "CodeChangeSets.prs_count": "76"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-11-14T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-14T00:00:00.000",
+          "CodeChangeSets.prs_count": "56"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-11-14T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-14T00:00:00.000",
+          "CodeChangeSets.prs_count": "15"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-11-21T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-21T00:00:00.000",
+          "CodeChangeSets.prs_count": "76"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-11-21T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-21T00:00:00.000",
+          "CodeChangeSets.prs_count": "57"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-11-21T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-21T00:00:00.000",
+          "CodeChangeSets.prs_count": "39"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-11-21T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-21T00:00:00.000",
+          "CodeChangeSets.prs_count": "12"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-11-28T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-28T00:00:00.000",
+          "CodeChangeSets.prs_count": "13"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-11-28T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-28T00:00:00.000",
+          "CodeChangeSets.prs_count": "76"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-11-28T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-28T00:00:00.000",
+          "CodeChangeSets.prs_count": "82"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-11-28T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-11-28T00:00:00.000",
+          "CodeChangeSets.prs_count": "59"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-12-05T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-05T00:00:00.000",
+          "CodeChangeSets.prs_count": "50"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-12-05T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-05T00:00:00.000",
+          "CodeChangeSets.prs_count": "39"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-12-05T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-05T00:00:00.000",
+          "CodeChangeSets.prs_count": "77"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-12-05T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-05T00:00:00.000",
+          "CodeChangeSets.prs_count": "13"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-12-12T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-12T00:00:00.000",
+          "CodeChangeSets.prs_count": "75"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-12-12T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-12T00:00:00.000",
+          "CodeChangeSets.prs_count": "80"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-12-12T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-12T00:00:00.000",
+          "CodeChangeSets.prs_count": "80"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-12-12T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-12T00:00:00.000",
+          "CodeChangeSets.prs_count": "13"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2022-12-19T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-19T00:00:00.000",
+          "CodeChangeSets.prs_count": "7"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2022-12-19T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-19T00:00:00.000",
+          "CodeChangeSets.prs_count": "7"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-12-19T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-19T00:00:00.000",
+          "CodeChangeSets.prs_count": "60"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2022-12-19T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-19T00:00:00.000",
+          "CodeChangeSets.prs_count": "15"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2022-12-26T00:00:00.000",
+          "CodeChangeSets.pr_time": "2022-12-26T00:00:00.000",
+          "CodeChangeSets.prs_count": "45"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2023-01-02T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-01-02T00:00:00.000",
+          "CodeChangeSets.prs_count": "1"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2023-01-02T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-01-02T00:00:00.000",
+          "CodeChangeSets.prs_count": "55"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2023-01-09T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-01-09T00:00:00.000",
+          "CodeChangeSets.prs_count": "2"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2023-01-09T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-01-09T00:00:00.000",
+          "CodeChangeSets.prs_count": "2"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2023-01-09T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-01-09T00:00:00.000",
+          "CodeChangeSets.prs_count": "1"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2023-01-09T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-01-09T00:00:00.000",
+          "CodeChangeSets.prs_count": "95"
+        },
+        {
+          "CodeChangeSets.action": "merged",
+          "CodeChangeSets.pr_time.week": "2023-01-16T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-01-16T00:00:00.000",
+          "CodeChangeSets.prs_count": "7"
+        },
+        {
+          "CodeChangeSets.action": "created",
+          "CodeChangeSets.pr_time.week": "2023-01-16T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-01-16T00:00:00.000",
+          "CodeChangeSets.prs_count": "108"
+        },
+        {
+          "CodeChangeSets.action": "closed",
+          "CodeChangeSets.pr_time.week": "2023-01-16T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-01-16T00:00:00.000",
+          "CodeChangeSets.prs_count": "2"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2023-02-06T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-02-06T00:00:00.000",
+          "CodeChangeSets.prs_count": "1"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2023-02-13T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-02-13T00:00:00.000",
+          "CodeChangeSets.prs_count": "5"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2023-02-20T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-02-20T00:00:00.000",
+          "CodeChangeSets.prs_count": "3"
+        },
+        {
+          "CodeChangeSets.action": "updated",
+          "CodeChangeSets.pr_time.week": "2023-02-27T00:00:00.000",
+          "CodeChangeSets.pr_time": "2023-02-27T00:00:00.000",
+          "CodeChangeSets.prs_count": "1"
+        }
+      ],
+      "lastRefreshTime": "2023-04-14T01:43:05.890Z",
+      "annotation": {
+        "measures": {
+          "CodeChangeSets.prs_count": {
+            "title": "Code Change Sets Prs Count",
+            "shortTitle": "Prs Count",
+            "type": "number",
+            "drillMembers": [
+              "CodeChangeSets.project_name",
+              "CodeChangeSets.repository_url",
+              "CodeChangeSets.role",
+              "CodeChangeSets.action",
+              "CodeChangeSets.pr_type",
+              "CodeChangeSets.is_bot",
+              "CodeChangeSets.pr_time"
+            ],
+            "drillMembersGrouped": {
+              "measures": [],
+              "dimensions": [
+                "CodeChangeSets.project_name",
+                "CodeChangeSets.repository_url",
+                "CodeChangeSets.role",
+                "CodeChangeSets.action",
+                "CodeChangeSets.pr_type",
+                "CodeChangeSets.is_bot",
+                "CodeChangeSets.pr_time"
+              ]
+            }
+          }
+        },
+        "dimensions": {
+          "CodeChangeSets.action": {
+            "title": "Code Change Sets Action",
+            "shortTitle": "Action",
+            "type": "string"
+          }
+        },
+        "segments": {
+          "CodeChangeSets.github_prs": {
+            "title": "Code Change Sets Github Prs",
+            "shortTitle": "Github Prs"
+          },
+          "CodeChangeSets.non_bots": {
+            "title": "Code Change Sets Non Bots",
+            "shortTitle": "Non Bots"
+          }
+        },
+        "timeDimensions": {
+          "CodeChangeSets.pr_time.week": {
+            "title": "Code Change Sets Pr Time",
+            "shortTitle": "Pr Time",
+            "type": "time"
+          },
+          "CodeChangeSets.pr_time": {
+            "title": "Code Change Sets Pr Time",
+            "shortTitle": "Pr Time",
+            "type": "time"
+          }
+        }
+      },
+      "dataSource": "redshiftlfx",
+      "dbType": "redshift",
+      "extDbType": "cubestore",
+      "external": false,
+      "slowQuery": false,
+      "total": null
+    }
+  ],
+  "pivotQuery": {
+    "segments": [
+      "CodeChangeSets.github_prs",
+      "CodeChangeSets.non_bots"
+    ],
+    "filters": [
+      {
+        "operator": "equals",
+        "values": [
+          "a0941000002wBz4AAE"
+        ],
+        "member": "CodeChangeSets.project_id"
+      }
+    ],
+    "measures": [
+      "CodeChangeSets.prs_count"
+    ],
+    "dimensions": [
+      "CodeChangeSets.action"
+    ],
+    "timeDimensions": [
+      {
+        "dimension": "CodeChangeSets.pr_time",
+        "dateRange": [
+          "2022-04-14T00:00:00.000",
+          "2023-04-14T23:59:59.999"
+        ],
+        "granularity": "week"
+      }
+    ],
+    "order": [
+      {
+        "id": "CodeChangeSets.pr_time",
+        "desc": false
+      }
+    ],
+    "timezone": "UTC",
+    "limit": 10000,
+    "queryType": "regularQuery"
+  },
+  "slowQuery": false
+}

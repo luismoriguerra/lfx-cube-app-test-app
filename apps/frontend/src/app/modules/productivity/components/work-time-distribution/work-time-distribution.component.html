@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+
+<div>
+  <div class="mb-2 relative">
+    <lfx-calculated-card-header [title]="'WORK TIME DISTRIBUTION IMPACT'"></lfx-calculated-card-header>
+
+    <div class="absolute top-0 right-0 flex justify-between">
+      <lfx-wip></lfx-wip>
+      <lfx-download [title]="'work-time-distribution-impact'" [visualization]="elementRef.nativeElement"></lfx-download>
+    </div>
+  </div>
+  <div class="text-gray-f83 text-tiny mb-3 min-h-[39px]">Trends showing The time of day when technical contributions are being made.</div>
+  <div class="text-base mb-4">
+    Long hours have contributed to a reduction in activity, which is a sign of
+    <span class="font-bold">contributor burnout</span>
+    <span class="status-icon"> <fa-icon class="bg-red text-white rounded-md text-lg absolute px-[1px]" [icon]="['fas', 'tired']"> </fa-icon> </span>.
+  </div>
+  <div id="commitsPerDay" class="w-full h-[380px]">
+    <lfx-bar-chart [config]="config" chartName="WorkTimeDistributionBar"></lfx-bar-chart>
+  </div>
+</div>

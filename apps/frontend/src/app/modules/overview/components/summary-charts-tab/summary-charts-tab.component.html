@@ -1,0 +1,38 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<div
+  class="group-tab border rounded-md px-4 pt-6 w-full min-w-[150px] h-[164px] cursor-pointer relative"
+  [ngClass]="{
+    'bg-primary/5': active,
+    'hover:bg-primary/5': true,
+    '2xl:w-auto 2xl:h-[100px] 2xl:flex ': true
+  }">
+  <lfx-wip class="absolute top-0 right-0 mt-1" *ngIf="isDummyData"></lfx-wip>
+  <div class="group-left grid place-items-center" [ngClass]="{ '2xl:block': true }">
+    <div class="text-tiny flex">
+      <span class="inline-block pr-1">
+        <fa-icon [icon]="icon"> </fa-icon>
+      </span>
+      <span class="text-gray-dark font-sans capitalize whitespace-nowrap"> {{ title }} </span>
+    </div>
+    <div class="font-sans text-gray-dark flex items-center space-x-2 pl-1 pt-1">
+      <span class="font-extrabold text-xl">{{ mainValue | number }}</span>
+      <span
+        class="text-tiny"
+        [ngClass]="{
+          'text-red-dark': secondaryValueColorType === 'negative',
+          'text-green': secondaryValueColorType === 'positive'
+        }">
+        {{ secondaryValue }}%
+      </span>
+    </div>
+  </div>
+  <div class="group-right w-full pointer-events-none px-4">
+    <div *ngIf="!config" [id]="chartName" style="width: 100%; height: 50px"></div>
+    <div *ngIf="config" style="width: 100%; height: 50px">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+# Copyright The Linux Foundation and each contributor to LFX.
+# SPDX-License-Identifier: MIT
+
+name: Bug Report
+description: Report an issue with LFx Insights
+labels: ["bug"]
+body:
+  - type: input
+    id: d-version
+    attributes:
+      label: Version
+      description: Which version you are reporting on?
+  - type: textarea
+    id: d-issue
+    attributes:
+      label: Describe the issue happening?
+      description: Also tell us, what did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: d-notes
+    attributes:
+      label: Relevant screenshots and references.
+      description: Any error logs, screenshots, references, or anything else that could help us reproduce and/or trace this issue further.

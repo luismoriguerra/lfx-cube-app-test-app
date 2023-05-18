@@ -1,0 +1,10 @@
+{
+  "name": "lfx-insights",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {},
+  "devDependencies": {},
+  "version": "0.0.1",
+  "private": true,
+  "license": "UNLICENSED"
+}

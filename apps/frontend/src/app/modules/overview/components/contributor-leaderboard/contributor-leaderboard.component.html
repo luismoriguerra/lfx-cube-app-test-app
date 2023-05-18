@@ -1,0 +1,83 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+<div class="flex w-full justify-between">
+  <div class="p-[30px] pr-0 max-w-[75%]">
+    <lfx-calculated-card-header [title]="'CONTRIBUTOR LEADERBOARD'"></lfx-calculated-card-header>
+    <div class="font-sans text-tiny text-gray-f83 my-3.5">Top individual contributors to the open source project.</div>
+    <div class="font-sans text-17 text-gray-dark">
+      <span class="font-bold">{{ selectedMetric.label }} {{ variation > 0 ? 'are up' : variation < 0 ? 'are down' : 'remained the same as' }}</span>
+      <span class="status-icon" *ngIf="variation !== 0">
+        <fa-icon class="text-white rounded-md text-lg bg-green absolute" *ngIf="variation >= 0" [icon]="['fas', 'arrow-up']"> </fa-icon>
+        <fa-icon class="text-white rounded-md text-lg bg-red absolute" *ngIf="variation < 0" [icon]="['fas', 'arrow-down']"> </fa-icon>
+      </span>
+      {{ variation !== 0 ? 'by ' + (variation | absValue) + '%' : '' }} against the previous time period
+    </div>
+  </div>
+
+  <div class="flex flex-col items-end justify-between p-[30px]">
+    <lfx-download
+      [title]="tableName"
+      [visualization]="elementRef.nativeElement"
+      [isLoading]="isExporting"
+      (exportCSV)="exportAsCSV()"
+      [cardName]="tableName"></lfx-download>
+    <div class="flex flex-col w-[230px]" data-html2canvas-ignore>
+      <span class="text-tiny text-gray-dark font-semibold pb-1"> Metric</span>
+      <ng-select
+        [items]="metrics"
+        [(ngModel)]="selectedMetric"
+        [virtualScroll]="true"
+        [clearable]="false"
+        [searchable]="false"
+        (change)="updateSelectedMetric($event)"
+        class="custom-ng-select w-[230px]">
+      </ng-select>
+    </div>
+  </div>
+</div>
+
+<lfx-table [tableConfiguration]="tableConfiguration" [maxHeight]="520" [tableRecords]="tableRecords" [isLoading]="isLoading"></lfx-table>
+
+<ng-template #numberTemplate let-element>
+  <span class="block text-tiny text-gray-dark text-center w-full">
+    {{ element.rowData[element.columnConfig.key] | lfxShortNumber }}
+  </span>
+</ng-template>
+
+<ng-template #nameTemplate let-element>
+  <span class="block text-tiny text-gray-dark font-semibold text-left w-full hover:text-primary">
+    {{ element.rowData[element.columnConfig.key] }}
+  </span>
+</ng-template>
+
+<ng-template #githubNameTemplate let-element>
+  <div class="block text-tiny text-gray-dark font-sans font-bold text-left w-full hover:text-primary flex items-center gap-2">
+    <span>
+      <ngx-avatar [src]="element.rowData?.logo" [name]="element.rowData?.name" [initialsSize]="1" [size]="32" [textSizeRatio]="2"></ngx-avatar>
+    </span>
+    <span>{{ element.rowData.username }}</span>
+  </div>
+</ng-template>
+
+<ng-template #commitsTemplate let-element>
+  <div class="block text-tiny text-gray-dark text-center w-full">
+    <span>
+      {{ element.rowData.count | lfxShortNumber }}
+    </span>
+    <span
+      [ngClass]="{
+        'text-green': element.rowData.countDiff > 0,
+        'text-red': element.rowData.countDiff <= 0
+      }">
+      ({{ (element.rowData.countDiff > 0 ? '+' : '') + (element.rowData.countDiff | lfxShortNumber) }})
+    </span>
+  </div>
+</ng-template>
+
+<ng-template #totalTemplate let-element>
+  <span class="block text-tiny text-gray-dark text-center w-full">
+    {{ element.rowData[element.columnConfig.key] + '%' }}
+  </span>
+</ng-template>

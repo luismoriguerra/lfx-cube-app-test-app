@@ -1,0 +1,14 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+
+.create-issue-btn {
+  @apply w-32 h-10 rounded-md bg-primary box-border text-white text-center float-right mt-8 p-0.5;
+}
+
+::ng-deep {
+  .mat-mdc-tab-header {
+    @apply border-b border-solid border-gray;
+  }
+}

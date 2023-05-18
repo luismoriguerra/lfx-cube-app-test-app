@@ -1,0 +1,88 @@
+{
+  "queryType": "regularQuery",
+  "results": [
+    {
+      "query": {
+        "segments": [
+          "Forks.non_bots"
+        ],
+        "filters": [],
+        "measures": [
+          "Forks.count"
+        ],
+        "timeDimensions": [
+          {
+            "dimension": "Forks.fork_time",
+            "dateRange": [
+              "2022-04-14T00:00:00.000",
+              "2023-04-14T23:59:59.999"
+            ]
+          }
+        ],
+        "timezone": "UTC",
+        "order": [],
+        "dimensions": [],
+        "limit": 10000,
+        "queryType": "regularQuery"
+      },
+      "data": [
+        {
+          "Forks.count": "102"
+        }
+      ],
+      "lastRefreshTime": "2023-04-05T13:50:40.000Z",
+      "annotation": {
+        "measures": {
+          "Forks.count": {
+            "title": "Forks Count",
+            "shortTitle": "Count",
+            "type": "number",
+            "drillMembers": [],
+            "drillMembersGrouped": {
+              "measures": [],
+              "dimensions": []
+            }
+          }
+        },
+        "dimensions": {},
+        "segments": {
+          "Forks.non_bots": {
+            "title": "Forks Non Bots",
+            "shortTitle": "Non Bots"
+          }
+        },
+        "timeDimensions": {}
+      },
+      "dataSource": "default",
+      "dbType": "postgres",
+      "extDbType": "cubestore",
+      "external": true,
+      "slowQuery": false,
+      "total": null
+    }
+  ],
+  "pivotQuery": {
+    "segments": [
+      "Forks.non_bots"
+    ],
+    "filters": [],
+    "measures": [
+      "Forks.count"
+    ],
+    "timeDimensions": [
+      {
+        "dimension": "Forks.fork_time",
+        "dateRange": [
+          "2022-04-14T00:00:00.000",
+          "2023-04-14T23:59:59.999"
+        ]
+      }
+    ],
+    "timezone": "UTC",
+    "order": [],
+    "dimensions": [],
+    "limit": 10000,
+    "queryType": "regularQuery"
+  },
+  "slowQuery": false
+}

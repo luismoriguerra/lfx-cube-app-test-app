@@ -1,0 +1,13 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+
+// These are simple boxes with border used for housing contents or data
+.content-box {
+  @apply border border-solid rounded-md border-gray;
+}
+
+// .circle {
+//   @apply flex justify-center items-center rounded-full w-100 h-100 bg-white border-4 text-center font-bold text-3xl;
+// }

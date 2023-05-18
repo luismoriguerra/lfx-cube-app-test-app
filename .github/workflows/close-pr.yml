@@ -1,0 +1,64 @@
+---
+# Copyright The Linux Foundation and each contributor to LFX.
+# SPDX-License-Identifier: MIT
+
+name: Close Pull Request
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  teardown:
+    if: contains(github.event.pull_request.head.ref, 'feature')
+    name: Teardown
+    environment: dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "name=dir::$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        run: |
+          npm config set '//npm.fontawesome.com/:_authToken' "${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}"
+          npm config set '//npm.pkg.github.com/:_authToken' "${{ secrets.LF_ENGINEERING_NPM_AUTH_TOKEN }}"
+
+      - name: Installing Packages
+        run: yarn install
+
+      - name: Build Project
+        run: yarn build:dev
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+          role-duration-seconds: 900
+
+      - name: Setup Stage Name
+        uses: mad9000/actions-find-and-replace-string@1
+        id: stage-name
+        with:
+          source: ${{ github.event.pull_request.head.ref }}
+          find: "/"
+          replace: "-"
+
+      - name: Teardown Feature Branch
+        run: |
+          yarn workspace frontend serverless:remove-client --stage ${{ steps.stage-name.outputs.value }} --verbose --no-confirm
+          yarn workspace frontend serverless:remove --stage ${{ steps.stage-name.outputs.value }} --verbose --no-confirm

@@ -1,0 +1,39 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<div *ngIf="componentFixed" class="overlay-top-fixed-bar bg-white w-full absolute top-[-1.24rem] h-[20px]"></div>
+<div #topFilterComponent class="top-filter-component border border-gray bg-gray-9f9 rounded px-8 py-4 transition-all duration-300">
+  <div [class.absolute]="componentFixed" class="-top-[1000px] section-top text-gray-dark text-2xl uppercase font-extrabold font-roboto mb-5">
+    {{ pageTitle }}
+  </div>
+  <div class="flex gap-4">
+    <div class="section-content-left basis-4/5">
+      <div class="group-project-details gap-1 flex items-center" [ngClass]="{ 'mb-3': !componentFixed }">
+        <span class="text-primary font-extrabold font-roboto text-xl whitespace-nowrap">{{ projectName }}</span>
+        <span class="hidden xl:inline-block text-gray-f83 font-roboto px-2 text-xl">/</span>
+        <div class="font-roboto text-base xl:w-full xl:max-w-[17.1875rem] inline-block">
+          <ng-select [items]="projects" [clearable]="false" bindLabel="name" [(ngModel)]="selectedProject" (change)="updateSelectedProject()"> </ng-select>
+        </div>
+        <span class="hidden xl:inline-block text-gray-f83 font-roboto px-2 text-xl">/</span>
+        <div class="font-roboto text-base xl:w-full xl:max-w-[17.1875rem] inline-block">
+          <ng-select
+            [items]="repositories"
+            [clearable]="false"
+            bindLabel="name"
+            bindValue="id"
+            [(ngModel)]="selectedRepository"
+            (change)="updateSelectedRepository()"></ng-select>
+        </div>
+      </div>
+      <div *ngIf="!componentFixed" class="text-gray-f83 text-sm">
+        {{ description }}
+      </div>
+    </div>
+    <div class="section-content-right ml-auto basis-1/5">
+      <lfx-date-range-filter
+        (filterHideBotsChange)="filterHideBotsChange.emit($event)"
+        (filterDateSelectedChange)="filterDateSelectedChange.emit($event)"></lfx-date-range-filter>
+    </div>
+  </div>
+</div>

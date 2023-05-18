@@ -1,0 +1,15 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+:host {
+  ::ng-deep {
+    .mat-mdc-checkbox.mat-accent {
+      --mdc-checkbox-selected-checkmark-color: #fff;
+      --mdc-checkbox-selected-focus-icon-color: #b0db67;
+      --mdc-checkbox-selected-hover-icon-color: #b0db67;
+      --mdc-checkbox-selected-icon-color: #b0db67;
+      --mdc-checkbox-selected-pressed-icon-color: #b0db67;
+    }
+  }
+}

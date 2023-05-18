@@ -1,0 +1,701 @@
+{
+  "queryType": "regularQuery",
+  "results": [
+    {
+      "query": {
+        "segments": [],
+        "filters": [
+          {
+            "operator": "equals",
+            "values": [
+              "a0941000002wBz4AAE"
+            ],
+            "member": "Issues.project_id"
+          }
+        ],
+        "measures": [
+          "Issues.count"
+        ],
+        "dimensions": [
+          "Issues.issue_state"
+        ],
+        "timeDimensions": [
+          {
+            "dimension": "Issues.issue_time",
+            "dateRange": [
+              "2022-04-14T00:00:00.000",
+              "2023-04-14T23:59:59.999"
+            ],
+            "granularity": "week"
+          }
+        ],
+        "order": [
+          {
+            "id": "Issues.issue_time",
+            "desc": false
+          }
+        ],
+        "timezone": "UTC",
+        "limit": 10000,
+        "queryType": "regularQuery"
+      },
+      "data": [
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-04-11T00:00:00.000",
+          "Issues.issue_time": "2022-04-11T00:00:00.000",
+          "Issues.count": "11"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-04-11T00:00:00.000",
+          "Issues.issue_time": "2022-04-11T00:00:00.000",
+          "Issues.count": "142"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-04-18T00:00:00.000",
+          "Issues.issue_time": "2022-04-18T00:00:00.000",
+          "Issues.count": "266"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-04-18T00:00:00.000",
+          "Issues.issue_time": "2022-04-18T00:00:00.000",
+          "Issues.count": "25"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-04-25T00:00:00.000",
+          "Issues.issue_time": "2022-04-25T00:00:00.000",
+          "Issues.count": "42"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-04-25T00:00:00.000",
+          "Issues.issue_time": "2022-04-25T00:00:00.000",
+          "Issues.count": "344"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-05-02T00:00:00.000",
+          "Issues.issue_time": "2022-05-02T00:00:00.000",
+          "Issues.count": "333"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-05-02T00:00:00.000",
+          "Issues.issue_time": "2022-05-02T00:00:00.000",
+          "Issues.count": "26"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-05-09T00:00:00.000",
+          "Issues.issue_time": "2022-05-09T00:00:00.000",
+          "Issues.count": "328"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-05-09T00:00:00.000",
+          "Issues.issue_time": "2022-05-09T00:00:00.000",
+          "Issues.count": "17"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-05-16T00:00:00.000",
+          "Issues.issue_time": "2022-05-16T00:00:00.000",
+          "Issues.count": "20"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-05-16T00:00:00.000",
+          "Issues.issue_time": "2022-05-16T00:00:00.000",
+          "Issues.count": "165"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-05-23T00:00:00.000",
+          "Issues.issue_time": "2022-05-23T00:00:00.000",
+          "Issues.count": "19"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-05-23T00:00:00.000",
+          "Issues.issue_time": "2022-05-23T00:00:00.000",
+          "Issues.count": "196"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-05-30T00:00:00.000",
+          "Issues.issue_time": "2022-05-30T00:00:00.000",
+          "Issues.count": "161"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-05-30T00:00:00.000",
+          "Issues.issue_time": "2022-05-30T00:00:00.000",
+          "Issues.count": "24"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-06-06T00:00:00.000",
+          "Issues.issue_time": "2022-06-06T00:00:00.000",
+          "Issues.count": "17"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-06-06T00:00:00.000",
+          "Issues.issue_time": "2022-06-06T00:00:00.000",
+          "Issues.count": "210"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-06-13T00:00:00.000",
+          "Issues.issue_time": "2022-06-13T00:00:00.000",
+          "Issues.count": "49"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-06-13T00:00:00.000",
+          "Issues.issue_time": "2022-06-13T00:00:00.000",
+          "Issues.count": "266"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-06-20T00:00:00.000",
+          "Issues.issue_time": "2022-06-20T00:00:00.000",
+          "Issues.count": "275"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-06-20T00:00:00.000",
+          "Issues.issue_time": "2022-06-20T00:00:00.000",
+          "Issues.count": "33"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-06-27T00:00:00.000",
+          "Issues.issue_time": "2022-06-27T00:00:00.000",
+          "Issues.count": "22"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-06-27T00:00:00.000",
+          "Issues.issue_time": "2022-06-27T00:00:00.000",
+          "Issues.count": "251"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-07-04T00:00:00.000",
+          "Issues.issue_time": "2022-07-04T00:00:00.000",
+          "Issues.count": "40"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-07-04T00:00:00.000",
+          "Issues.issue_time": "2022-07-04T00:00:00.000",
+          "Issues.count": "262"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-07-11T00:00:00.000",
+          "Issues.issue_time": "2022-07-11T00:00:00.000",
+          "Issues.count": "224"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-07-11T00:00:00.000",
+          "Issues.issue_time": "2022-07-11T00:00:00.000",
+          "Issues.count": "41"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-07-18T00:00:00.000",
+          "Issues.issue_time": "2022-07-18T00:00:00.000",
+          "Issues.count": "27"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-07-18T00:00:00.000",
+          "Issues.issue_time": "2022-07-18T00:00:00.000",
+          "Issues.count": "217"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-07-25T00:00:00.000",
+          "Issues.issue_time": "2022-07-25T00:00:00.000",
+          "Issues.count": "189"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-07-25T00:00:00.000",
+          "Issues.issue_time": "2022-07-25T00:00:00.000",
+          "Issues.count": "69"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-08-01T00:00:00.000",
+          "Issues.issue_time": "2022-08-01T00:00:00.000",
+          "Issues.count": "66"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-08-01T00:00:00.000",
+          "Issues.issue_time": "2022-08-01T00:00:00.000",
+          "Issues.count": "247"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-08-08T00:00:00.000",
+          "Issues.issue_time": "2022-08-08T00:00:00.000",
+          "Issues.count": "147"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-08-08T00:00:00.000",
+          "Issues.issue_time": "2022-08-08T00:00:00.000",
+          "Issues.count": "59"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-08-15T00:00:00.000",
+          "Issues.issue_time": "2022-08-15T00:00:00.000",
+          "Issues.count": "113"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-08-15T00:00:00.000",
+          "Issues.issue_time": "2022-08-15T00:00:00.000",
+          "Issues.count": "39"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-08-22T00:00:00.000",
+          "Issues.issue_time": "2022-08-22T00:00:00.000",
+          "Issues.count": "67"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-08-22T00:00:00.000",
+          "Issues.issue_time": "2022-08-22T00:00:00.000",
+          "Issues.count": "25"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-08-29T00:00:00.000",
+          "Issues.issue_time": "2022-08-29T00:00:00.000",
+          "Issues.count": "24"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-08-29T00:00:00.000",
+          "Issues.issue_time": "2022-08-29T00:00:00.000",
+          "Issues.count": "5"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-09-05T00:00:00.000",
+          "Issues.issue_time": "2022-09-05T00:00:00.000",
+          "Issues.count": "26"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-09-05T00:00:00.000",
+          "Issues.issue_time": "2022-09-05T00:00:00.000",
+          "Issues.count": "45"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-09-12T00:00:00.000",
+          "Issues.issue_time": "2022-09-12T00:00:00.000",
+          "Issues.count": "26"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-09-12T00:00:00.000",
+          "Issues.issue_time": "2022-09-12T00:00:00.000",
+          "Issues.count": "26"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-09-19T00:00:00.000",
+          "Issues.issue_time": "2022-09-19T00:00:00.000",
+          "Issues.count": "45"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-09-19T00:00:00.000",
+          "Issues.issue_time": "2022-09-19T00:00:00.000",
+          "Issues.count": "12"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-09-26T00:00:00.000",
+          "Issues.issue_time": "2022-09-26T00:00:00.000",
+          "Issues.count": "18"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-09-26T00:00:00.000",
+          "Issues.issue_time": "2022-09-26T00:00:00.000",
+          "Issues.count": "20"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-10-03T00:00:00.000",
+          "Issues.issue_time": "2022-10-03T00:00:00.000",
+          "Issues.count": "27"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-10-03T00:00:00.000",
+          "Issues.issue_time": "2022-10-03T00:00:00.000",
+          "Issues.count": "38"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-10-10T00:00:00.000",
+          "Issues.issue_time": "2022-10-10T00:00:00.000",
+          "Issues.count": "29"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-10-10T00:00:00.000",
+          "Issues.issue_time": "2022-10-10T00:00:00.000",
+          "Issues.count": "24"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-10-17T00:00:00.000",
+          "Issues.issue_time": "2022-10-17T00:00:00.000",
+          "Issues.count": "53"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-10-17T00:00:00.000",
+          "Issues.issue_time": "2022-10-17T00:00:00.000",
+          "Issues.count": "55"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-10-24T00:00:00.000",
+          "Issues.issue_time": "2022-10-24T00:00:00.000",
+          "Issues.count": "23"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-10-24T00:00:00.000",
+          "Issues.issue_time": "2022-10-24T00:00:00.000",
+          "Issues.count": "16"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-10-31T00:00:00.000",
+          "Issues.issue_time": "2022-10-31T00:00:00.000",
+          "Issues.count": "33"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-10-31T00:00:00.000",
+          "Issues.issue_time": "2022-10-31T00:00:00.000",
+          "Issues.count": "29"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-11-07T00:00:00.000",
+          "Issues.issue_time": "2022-11-07T00:00:00.000",
+          "Issues.count": "48"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-11-07T00:00:00.000",
+          "Issues.issue_time": "2022-11-07T00:00:00.000",
+          "Issues.count": "30"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-11-14T00:00:00.000",
+          "Issues.issue_time": "2022-11-14T00:00:00.000",
+          "Issues.count": "19"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-11-14T00:00:00.000",
+          "Issues.issue_time": "2022-11-14T00:00:00.000",
+          "Issues.count": "26"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-11-21T00:00:00.000",
+          "Issues.issue_time": "2022-11-21T00:00:00.000",
+          "Issues.count": "19"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-11-21T00:00:00.000",
+          "Issues.issue_time": "2022-11-21T00:00:00.000",
+          "Issues.count": "10"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-11-28T00:00:00.000",
+          "Issues.issue_time": "2022-11-28T00:00:00.000",
+          "Issues.count": "38"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-11-28T00:00:00.000",
+          "Issues.issue_time": "2022-11-28T00:00:00.000",
+          "Issues.count": "60"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-12-05T00:00:00.000",
+          "Issues.issue_time": "2022-12-05T00:00:00.000",
+          "Issues.count": "27"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-12-05T00:00:00.000",
+          "Issues.issue_time": "2022-12-05T00:00:00.000",
+          "Issues.count": "34"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-12-12T00:00:00.000",
+          "Issues.issue_time": "2022-12-12T00:00:00.000",
+          "Issues.count": "13"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-12-12T00:00:00.000",
+          "Issues.issue_time": "2022-12-12T00:00:00.000",
+          "Issues.count": "12"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2022-12-19T00:00:00.000",
+          "Issues.issue_time": "2022-12-19T00:00:00.000",
+          "Issues.count": "2"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2022-12-19T00:00:00.000",
+          "Issues.issue_time": "2022-12-19T00:00:00.000",
+          "Issues.count": "1"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2023-01-02T00:00:00.000",
+          "Issues.issue_time": "2023-01-02T00:00:00.000",
+          "Issues.count": "1"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2023-01-02T00:00:00.000",
+          "Issues.issue_time": "2023-01-02T00:00:00.000",
+          "Issues.count": "1"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2023-01-09T00:00:00.000",
+          "Issues.issue_time": "2023-01-09T00:00:00.000",
+          "Issues.count": "17"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2023-01-09T00:00:00.000",
+          "Issues.issue_time": "2023-01-09T00:00:00.000",
+          "Issues.count": "17"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2023-01-16T00:00:00.000",
+          "Issues.issue_time": "2023-01-16T00:00:00.000",
+          "Issues.count": "11"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2023-01-16T00:00:00.000",
+          "Issues.issue_time": "2023-01-16T00:00:00.000",
+          "Issues.count": "31"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2023-01-23T00:00:00.000",
+          "Issues.issue_time": "2023-01-23T00:00:00.000",
+          "Issues.count": "2"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2023-01-23T00:00:00.000",
+          "Issues.issue_time": "2023-01-23T00:00:00.000",
+          "Issues.count": "2"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2023-01-30T00:00:00.000",
+          "Issues.issue_time": "2023-01-30T00:00:00.000",
+          "Issues.count": "39"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2023-01-30T00:00:00.000",
+          "Issues.issue_time": "2023-01-30T00:00:00.000",
+          "Issues.count": "25"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2023-02-06T00:00:00.000",
+          "Issues.issue_time": "2023-02-06T00:00:00.000",
+          "Issues.count": "48"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2023-02-06T00:00:00.000",
+          "Issues.issue_time": "2023-02-06T00:00:00.000",
+          "Issues.count": "41"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2023-02-13T00:00:00.000",
+          "Issues.issue_time": "2023-02-13T00:00:00.000",
+          "Issues.count": "56"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2023-02-13T00:00:00.000",
+          "Issues.issue_time": "2023-02-13T00:00:00.000",
+          "Issues.count": "30"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2023-02-20T00:00:00.000",
+          "Issues.issue_time": "2023-02-20T00:00:00.000",
+          "Issues.count": "20"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2023-02-20T00:00:00.000",
+          "Issues.issue_time": "2023-02-20T00:00:00.000",
+          "Issues.count": "40"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2023-02-27T00:00:00.000",
+          "Issues.issue_time": "2023-02-27T00:00:00.000",
+          "Issues.count": "126"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2023-02-27T00:00:00.000",
+          "Issues.issue_time": "2023-02-27T00:00:00.000",
+          "Issues.count": "97"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2023-03-06T00:00:00.000",
+          "Issues.issue_time": "2023-03-06T00:00:00.000",
+          "Issues.count": "62"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2023-03-06T00:00:00.000",
+          "Issues.issue_time": "2023-03-06T00:00:00.000",
+          "Issues.count": "46"
+        },
+        {
+          "Issues.issue_state": "closed",
+          "Issues.issue_time.week": "2023-03-13T00:00:00.000",
+          "Issues.issue_time": "2023-03-13T00:00:00.000",
+          "Issues.count": "16"
+        },
+        {
+          "Issues.issue_state": "open",
+          "Issues.issue_time.week": "2023-03-13T00:00:00.000",
+          "Issues.issue_time": "2023-03-13T00:00:00.000",
+          "Issues.count": "76"
+        }
+      ],
+      "lastRefreshTime": "2023-04-04T13:22:48.000Z",
+      "annotation": {
+        "measures": {
+          "Issues.count": {
+            "title": "Issues Count",
+            "shortTitle": "Count",
+            "type": "number",
+            "drillMembers": [],
+            "drillMembersGrouped": {
+              "measures": [],
+              "dimensions": []
+            }
+          }
+        },
+        "dimensions": {
+          "Issues.issue_state": {
+            "title": "Issues Issue State",
+            "shortTitle": "Issue State",
+            "type": "string"
+          }
+        },
+        "segments": {},
+        "timeDimensions": {
+          "Issues.issue_time.week": {
+            "title": "Issues Issue Time",
+            "shortTitle": "Issue Time",
+            "type": "time"
+          },
+          "Issues.issue_time": {
+            "title": "Issues Issue Time",
+            "shortTitle": "Issue Time",
+            "type": "time"
+          }
+        }
+      },
+      "dataSource": "redshiftlfx",
+      "dbType": "redshift",
+      "extDbType": "cubestore",
+      "external": true,
+      "slowQuery": false,
+      "total": null
+    }
+  ],
+  "pivotQuery": {
+    "segments": [],
+    "filters": [
+      {
+        "operator": "equals",
+        "values": [
+          "a0941000002wBz4AAE"
+        ],
+        "member": "Issues.project_id"
+      }
+    ],
+    "measures": [
+      "Issues.count"
+    ],
+    "dimensions": [
+      "Issues.issue_state"
+    ],
+    "timeDimensions": [
+      {
+        "dimension": "Issues.issue_time",
+        "dateRange": [
+          "2022-04-14T00:00:00.000",
+          "2023-04-14T23:59:59.999"
+        ],
+        "granularity": "week"
+      }
+    ],
+    "order": [
+      {
+        "id": "Issues.issue_time",
+        "desc": false
+      }
+    ],
+    "timezone": "UTC",
+    "limit": 10000,
+    "queryType": "regularQuery"
+  },
+  "slowQuery": false
+}

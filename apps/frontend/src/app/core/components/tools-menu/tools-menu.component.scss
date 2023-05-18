@@ -1,0 +1,23 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+
+.icon-wrap {
+  ::ng-deep {
+    fa-icon {
+      svg {
+        @apply w-2 -ml-[1px];
+      }
+    }
+  }
+}
+
+.single-icons {
+  @apply cursor-pointer;
+  ::ng-deep {
+    svg {
+      @apply text-2xl;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<div class="relative text-tiny text-gray-dark cursor-pointer" appLfxClickOutside (clickOutside)="onOutsideClick($event)">
+  <div
+    (click)="openOptions()"
+    class="cursor-pointer"
+    class="section-placeholder bg-white border border-gray rounded h-[37px] min-w-[171px] flex justify-between">
+    <div class="self-center">
+      <span class="ml-2">{{ selectedDateDisplay }}</span>
+    </div>
+    <div class="h-full bg-gray-9f9 border border-solid rounded-sm-r-lg border-gray flex items-center px-2">
+      <fa-icon [icon]="['fal', 'calendar-alt']"></fa-icon>
+    </div>
+  </div>
+  <div *ngIf="isDisplayed" appLfxPositionElement class="section-content-popup border rounded bg-white absolute w-[600px] border-box z-50">
+    <!-- header -->
+    <div class="bg-gray-9f9 flex justify-between px-4 py-2">
+      <span class="flex items-center">
+        Duration: <span class="font-bold">{{ duration | number }}</span>
+      </span>
+
+      <fa-icon [icon]="icons.times" class="cursor-pointer" (click)="onOutsideClick()"></fa-icon>
+    </div>
+    <div class="flex flex-row">
+      <div class="basis-1/5 p-4">
+        <div class="font-bold mb-6">Date Range</div>
+        <div
+          *ngFor="let item of filterDatesOptions"
+          (click)="onSelectDateFilter(item)"
+          class="mb-2 cursor-pointer hover:text-primary/90"
+          [ngClass]="{ 'text-primary/90': item === filterDateSelected }">
+          {{ item }}
+        </div>
+      </div>
+
+      <div class="basis-4/5 grid grid-cols-2 gap-2">
+        <mat-calendar
+          class="lfx-calender"
+          (selectedChange)="onSelectedChange($event)"
+          [minDate]="defaultMinDate"
+          [selected]="selectedDateRange"
+          [startAt]="fromViewDate"
+          #fromCal>
+        </mat-calendar>
+        <div class="relative">
+          <div class="absolute top-[20px] right-[18px] flex gap-2">
+            <button (click)="onCalendarNavigate(-1)">
+              <fa-icon [icon]="icons.chevronLeft"></fa-icon>
+            </button>
+            <button (click)="onCalendarNavigate(1)">
+              <fa-icon [icon]="icons.chevronRight"></fa-icon>
+            </button>
+          </div>
+          <mat-calendar
+            class="lfx-calender"
+            (selectedChange)="onSelectedChange($event)"
+            [maxDate]="defaultMaxDate"
+            [selected]="selectedDateRange"
+            [startAt]="toViewDate"
+            #toCal>
+          </mat-calendar>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-row border-t border-solid border-gray items-center p-4 relative">
+      <div class="absolute left-[25%] bottom-[65%]">
+        <lfx-wip class="ml-3"></lfx-wip>
+      </div>
+      <div class="basis-2/5">
+        <div class="font-bold mb-1">Compare</div>
+        <div class="flex gap-2">
+          <label class="flex space-x-2 items-center cursor-pointer">
+            <input class="lfx-radio" type="radio" value="PP" [(ngModel)]="compare" (ngModelChange)="onChangeCompare()" />
+            <span>Previous Period</span>
+          </label>
+          <label class="flex space-x-2 items-center cursor-pointer">
+            <input class="lfx-radio" type="radio" value="YoY" [(ngModel)]="compare" (ngModelChange)="onChangeCompare()" />
+            <span>YoY</span>
+          </label>
+        </div>
+      </div>
+      <div class="basis-1/5">
+        <div class="font-bold">Bots</div>
+        <label class="flex space-x-2 items-center cursor-pointer">
+          <input type="checkbox" class="lfx-checkbox" [(ngModel)]="hideBots" (ngModelChange)="onChangeHideBots()" /><span>Hide</span>
+        </label>
+      </div>
+      <div class="basis-2/5 flex items-center gap-2 justify-end">
+        <button class="lfx-btn white" (click)="clear()">Clear Dates</button>
+        <button class="lfx-btn primary w-24" (click)="apply()">Apply</button>
+      </div>
+    </div>
+  </div>
+</div>

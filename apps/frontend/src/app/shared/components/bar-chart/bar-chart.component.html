@@ -1,0 +1,14 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<div class="h-full w-full relative">
+  <div class="absolute top-8 left-0 w-full h-full flex justify-center items-center" *ngIf="isLoading">
+    <lfx-loading></lfx-loading>
+  </div>
+  <div *ngIf="!isLoading" [id]="chartName" class="h-full w-full"></div>
+  <div
+    *ngIf="annotations && config.annotationSettings"
+    [class]="'absolute flex flex-col annotation w-[190px] ' + config.annotationSettings.horizontalAlign + ' ' + config.annotationSettings.verticalAlign"
+    [innerHTML]="getAnnotationHTML(config.annotationSettings.template, annotations)"></div>
+</div>

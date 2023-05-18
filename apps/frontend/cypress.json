@@ -1,0 +1,16 @@
+{
+  "baseUrl": "http://localhost:4200",
+  "supportFile": "cypress/support/index.ts",
+  "pluginsFile": "cypress/plugins/index.ts",
+  "viewportWidth": 1920,
+  "viewportHeight": 1080,
+  "chromeWebSecurity": false,
+  "video": true,
+  "videoUploadOnPasses": false,
+  "screenshot": false,
+  "trashAssetsBeforeRuns": true,
+  "defaultCommandTimeout": 70000,
+  "requestTimeout": 50000,
+  "projectId": "8gbjtz",
+  "experimentalStudio": true
+}

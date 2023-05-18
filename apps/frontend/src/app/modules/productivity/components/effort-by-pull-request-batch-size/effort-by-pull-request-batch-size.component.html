@@ -1,0 +1,60 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+<div class="flex w-full justify-between pb-2.5 mb-14">
+  <div>
+    <lfx-calculated-card-header [title]="'EFFORT BY PULL REQUEST BATCH SIZE'"></lfx-calculated-card-header>
+
+    <div class="font-sans text-tiny text-gray-f83 my-3.5">The correlation between pull request size in lines of code and time spent by contributors.</div>
+    <div class="font-sans text-base text-gray-dark">
+      Large pull requests were <span class="font-bold">up 22%</span>
+      <span class="status-icon"> <fa-icon class="bg-yellow text-white rounded-md text-lg absolute px-[1px]" [icon]="['fas', 'chart-line']"> </fa-icon> </span>
+      compared to the previous time period.
+    </div>
+  </div>
+
+  <div class="flex justify-between">
+    <lfx-wip></lfx-wip>
+    <lfx-download [title]="'effort-by-pull-request-batch-size'" [visualization]="elementRef.nativeElement"></lfx-download>
+  </div>
+</div>
+
+<div class="flex flex-col">
+  <div class="flex flex-row items-center w-full mb-3.5">
+    <span class="whitespace-nowrap text-gray-f83 text-end text-tiny font-sans font-semibold w-[17%] mr-3.5"> Lines of Code </span>
+    <div class="flex flex-col items-center w-[14%] mr-1">
+      <i class="fal fa-user-plus text-gray-f83 text-xl"></i>
+      <span class="text-gray-f83 text-tiny mt-1.5"> Participants </span>
+    </div>
+    <div class="flex flex-col items-center w-[14%] mr-1">
+      <i class="fal fa-search text-gray-f83 text-xl"></i>
+      <span class="text-gray-f83 text-tiny mt-1.5"> Reviews </span>
+    </div>
+    <div class="flex flex-col items-center w-[14%] mr-1">
+      <i class="fal fa-clock text-gray-f83 text-xl"></i>
+      <span class="text-gray-f83 text-tiny mt-1.5"> Review Time </span>
+    </div>
+    <div class="flex flex-col items-center w-[14%] mr-1">
+      <i class="fal fa-comments text-gray-f83 text-xl"></i>
+      <span class="text-gray-f83 text-tiny mt-1.5"> Comments </span>
+    </div>
+    <div class="flex flex-col items-center w-[14%] mr-1">
+      <i class="fal fa-tachometer-fast text-gray-f83 text-xl"></i>
+      <span class="text-gray-f83 text-tiny mt-1.5"> Merge Time </span>
+    </div>
+    <div class="flex flex-col items-center w-[14%]">
+      <img class="w-5 h-5" src="assets/icons/pull-request-icon.svg" />
+      <span class="text-gray-f83 text-tiny mt-1.5"> Pull Requests </span>
+    </div>
+  </div>
+  <div class="flex items-center mb-3.5" *ngFor="let item of efforts">
+    <span class="whitespace-nowrap text-gray-f83 text-end text-tiny w-[17%] mr-3.5"> {{ item.title }} </span>
+    <div class="w-[14%] p-1 bg-blue-light/95 text-gray-dark text-tiny text-center mr-1 font-arial">{{ item.participants }}</div>
+    <div class="w-[14%] p-1 bg-blue-light/95 text-gray-dark text-tiny text-center mr-1 font-arial">{{ item.reviews }}</div>
+    <div class="w-[14%] p-1 bg-blue-light/95 text-gray-dark text-tiny text-center mr-1 font-arial">{{ item.reviewTime }}</div>
+    <div class="w-[14%] p-1 bg-blue-light/95 text-gray-dark text-tiny text-center mr-1 font-arial">{{ item.comments }}</div>
+    <div class="w-[14%] p-1 bg-blue-light/95 text-gray-dark text-tiny text-center mr-1 font-arial">{{ item.mergeTime }}</div>
+    <div class="w-[14%] p-1 bg-blue-light/95 text-gray-dark text-tiny text-center mr-1 font-arial">{{ item.prs }}</div>
+  </div>
+</div>

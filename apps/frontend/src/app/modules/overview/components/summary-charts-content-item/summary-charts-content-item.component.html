@@ -1,0 +1,48 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<div class="group-content border px-7 py-7 bg-white rounded-md">
+  <div class="relative">
+    <lfx-calculated-card-header [title]="title" [tooltipTemplate]="tooltipTemplate"></lfx-calculated-card-header>
+    <div class="absolute top-0 right-0 flex justify-between">
+      <lfx-wip *ngIf="isDummyData"></lfx-wip>
+      <lfx-download [title]="title" [visualization]="elementRef.nativeElement" [cardName]="chartName"></lfx-download>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="group-c-left w-[280px] text-gray-dark font-sans">
+      <div class="text-gray-f83 text-tiny mb-3">{{ subtitle }}</div>
+      <div class="text-base">
+        {{ descriptionP1 }}
+        <span class="font-bold">{{ descriptionP2 }}</span>
+        <span
+          *ngIf="iconType !== 'zero'"
+          class="status-icon"
+          [ngClass]="{
+            'bg-yellow': iconType === 'warning'
+          }">
+          <fa-icon class="bg-red text-white rounded-md text-lg absolute px-[1px]" *ngIf="iconType === 'negative'" [icon]="['fas', 'chart-line-down']">
+          </fa-icon>
+          <fa-icon class="bg-green text-white rounded-md text-lg absolute px-[1px]" *ngIf="iconType === 'positive'" [icon]="['fas', 'chart-line']"> </fa-icon>
+        </span>
+        {{ descriptionP3 }}
+      </div>
+    </div>
+    <div class="group-c-right flex-1">
+      <div>
+        <div *ngIf="!config" [id]="chartName" class="wf-full h-64"></div>
+        <div *ngIf="config" class="wf-full h-64">
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #tooltipTemplate>
+  <div class="absolute bottom-[120%] left-[5%] font-sans rounded-md bg-gray-dark text-xs text-white w-[266px] p-4">
+    View more information
+    <a class="hover:underline text-primary" target="_blank" [href]="chartWikiLink">here</a>
+  </div>
+</ng-template>

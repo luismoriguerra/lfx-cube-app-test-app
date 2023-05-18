@@ -1,0 +1,104 @@
+{
+  "queryType": "regularQuery",
+  "results": [
+    {
+      "query": {
+        "segments": [
+          "Contributors.non_bots"
+        ],
+        "filters": [
+          {
+            "operator": "equals",
+            "values": [
+              "a0941000002wBz4AAE"
+            ],
+            "member": "Contributors.project_id"
+          }
+        ],
+        "measures": [
+          "Contributors.contributor_count"
+        ],
+        "timeDimensions": [
+          {
+            "dimension": "Contributors.contribution_time",
+            "dateRange": [
+              "2022-04-14T00:00:00.000",
+              "2023-04-14T23:59:59.999"
+            ]
+          }
+        ],
+        "timezone": "UTC",
+        "order": [],
+        "dimensions": [],
+        "limit": 10000,
+        "queryType": "regularQuery"
+      },
+      "data": [
+        {
+          "Contributors.contributor_count": "2470"
+        }
+      ],
+      "lastRefreshTime": "2023-04-14T01:43:05.888Z",
+      "annotation": {
+        "measures": {
+          "Contributors.contributor_count": {
+            "title": "Contributors Contributor Count",
+            "shortTitle": "Contributor Count",
+            "type": "number",
+            "drillMembers": [],
+            "drillMembersGrouped": {
+              "measures": [],
+              "dimensions": []
+            }
+          }
+        },
+        "dimensions": {},
+        "segments": {
+          "Contributors.non_bots": {
+            "title": "Contributors Non Bots",
+            "shortTitle": "Non Bots"
+          }
+        },
+        "timeDimensions": {}
+      },
+      "dataSource": "redshiftlfx",
+      "dbType": "redshift",
+      "extDbType": "cubestore",
+      "external": false,
+      "slowQuery": false,
+      "total": null
+    }
+  ],
+  "pivotQuery": {
+    "segments": [
+      "Contributors.non_bots"
+    ],
+    "filters": [
+      {
+        "operator": "equals",
+        "values": [
+          "a0941000002wBz4AAE"
+        ],
+        "member": "Contributors.project_id"
+      }
+    ],
+    "measures": [
+      "Contributors.contributor_count"
+    ],
+    "timeDimensions": [
+      {
+        "dimension": "Contributors.contribution_time",
+        "dateRange": [
+          "2022-04-14T00:00:00.000",
+          "2023-04-14T23:59:59.999"
+        ]
+      }
+    ],
+    "timezone": "UTC",
+    "order": [],
+    "dimensions": [],
+    "limit": 10000,
+    "queryType": "regularQuery"
+  },
+  "slowQuery": false
+}

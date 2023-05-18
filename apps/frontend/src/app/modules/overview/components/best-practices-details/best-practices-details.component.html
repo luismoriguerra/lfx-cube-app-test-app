@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+<div class="flex items-center" [class.embed]="embedMode">
+  <div
+    class="basis-3/12 mr-2.5 text-xs font-sans text-gray-dark inline-flex details-col"
+    *ngIf="label"
+    [ngClass]="{
+      'text-xs': progressBarStyle === 'thin',
+      'text-sm': progressBarStyle === 'thick'
+    }">
+    <img class="ml-3" *ngIf="icon" [src]="icon" />
+    <span class="ml-3 flex items-center"> {{ label }}</span>
+  </div>
+  <div class="py-4 px-2 min-w-[50px] text-center bg-gray-fef progress-val-col">
+    <span class="font-bold text-gray-dark font-sans text-[14px]">{{ value }}</span
+    >{{ progressBarStyle === 'thick' ? '%' : '' }}
+  </div>
+
+  <div class="w-full mx-4">
+    <lfx-progress-bar [value]="displayedValue()" [config]="getConfig()"></lfx-progress-bar>
+  </div>
+
+  <div class="p-4 bg-gray-fef cursor-pointer" *ngIf="!embedMode" (click)="toggleMetric()">
+    <div>
+      <fa-icon [icon]="showDetails ? icons.faCaretUpSolid : icons.faCaretDownSolid"></fa-icon>
+    </div>
+  </div>
+</div>

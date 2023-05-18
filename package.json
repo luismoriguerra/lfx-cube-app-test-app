@@ -1,0 +1,45 @@
+{
+  "scripts": {
+    "build:dev": "turbo run build:dev",
+    "build": "turbo run build",
+    "start": "turbo run start --filter=!backend",
+    "cube": "turbo run start --filter=cubejs --filter=lfx-crowddev-db",
+    "frontend": "turbo run start --filter=frontend",
+    "frontend:dev": "turbo run start:dev --filter=frontend",
+    "frontend:remote": "turbo run start:remote --filter=frontend",
+    "lint": "turbo run lint",
+    "prepare": "npx husky install",
+    "start:server": "turbo run start:server",
+    "check-headers": "bash check-headers.sh",
+    "test": "turbo run start --filter=tests-e2e",
+    "auditcritical": "./yarn_audit.sh",
+    "integration:test": "turbo run integration:test",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "reinstall": "yarn clean && yarn install"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.3",
+    "pretty-quick": "^3.1.3",
+    "turbo": "*"
+  },
+  "resolutions": {
+    "adm-zip": "^0.5.2",
+    "jose": "^4.10.4",
+    "json5": "^2.2.2",
+    "jsonwebtoken": "^9.0.0",
+    "terser": "^5.14.2",
+    "simple-git": "3.16.0",
+    "got": "^11.8.2",
+    "http-cache-semantics": "^4.1.1"
+  },
+  "dependencies": {},
+  "version": "0.0.0"
+}

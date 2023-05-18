@@ -1,0 +1,50 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+<div class="box-section border border-gray rounded-md py-8 px-8 text-gray-dark">
+  <div class="mb-[0.85rem] relative">
+    <lfx-calculated-card-header [tooltipTemplate]="tooltipTemplate" [title]="'Geographical Distribution'"></lfx-calculated-card-header>
+    <div class="absolute top-0 right-0 flex flex-col justify-between">
+      <lfx-download [title]="'geographical-distribution'" [visualization]="elementRef.nativeElement" [cardName]="chartName"></lfx-download>
+    </div>
+  </div>
+  <ng-container>
+    <div class="text-[#807f83] text-tiny mb-4">The distribution of contributors based on geographical location at the time of contribution.</div>
+    <div class="text-17">
+      Total contributors&nbsp;
+      <span class="font-bold inline-flex">
+        <span> {{ allCountriesVariation | valueChange : true }}</span>
+        &nbsp;by {{ allCountriesVariation | absValue }}%
+        <span class="font-sans text-base text-gray-dark" [innerHTML]="allCountriesVariation | iconStatus"></span>
+      </span>
+      compared to the previous time period, with a {{ noUsaVariation }}% {{ noUsaVariation | valueChange : false : false }} in contributors from countries
+      outside of the United States of America.
+    </div>
+    <div class="group-container flex pt-[1.5rem]">
+      <div class="group-left w-max max-w-[300px]">
+        <div *ngIf="topRegions && topRegions.length" class="font-roboto text-lg uppercase pb-[1.2rem] laptop:text-base">Top 5 Regions</div>
+        <div class="top-region-item mb-[0.9rem]" *ngFor="let item of topRegions">
+          <div class="text-[28px] font-extrabold laptop:text-2.25xl">{{ item.value }}</div>
+          <div class="text-gray-pale text-base">{{ item.name }}</div>
+        </div>
+      </div>
+      <div class="group-right flex-1">
+        <div style="width: 100%; height: 400px">
+          <lfx-map-chart [chartName]="chartName" [config]="mapConfig" (dataChanged)="mapDataChanged($event)"></lfx-map-chart>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #tooltipTemplate>
+  <div class="absolute bottom-[120%] left-[15%] font-sans rounded-md bg-gray-dark text-xs text-white w-[266px] p-4">
+    Calculated using the CHAOSS metric for Contributor Location.
+    <a class="hover:underline text-primary" href="https://chaoss.community/kb/metric-activity-dates-and-times/">Learn More</a>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <lfx-loading></lfx-loading>
+</ng-template>

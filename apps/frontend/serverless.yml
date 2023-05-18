@@ -1,0 +1,119 @@
+---
+# Copyright The Linux Foundation and each contributor to LFX.
+# SPDX-License-Identifier: MIT
+
+service: lfx-insights
+
+frameworkVersion: '<3.0.0'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: ${opt:stage}
+  region: us-east-2
+  stackTags:
+    product: insights
+    component: frontend
+    env: ${ssm:lfx-insights-environment}
+
+plugins:
+  - serverless-finch
+
+custom:
+  domain:
+    production: insights.v3.lfx.linuxfoundation.org
+    dev: insights.dev.platform.linuxfoundation.org
+    other: ${opt:stage}.insights-fb.dev.platform.linuxfoundation.org
+  certificateARN:
+    production: foo
+    dev: bar
+    other: arn:aws:acm:us-east-1:788942260905:certificate/1d7c0c04-24a7-48f0-8090-1df84434fe0b
+  manageResources:
+    production: false
+    dev: false
+    other: true
+  bucketName:
+    dev: insights.dev.platform.linuxfoundation.org
+    production: insights.v3.lfx.linuxfoundation.org
+    other: lfx-insights-feature-branch-${opt:stage}
+  client:
+    # bucket is defined in Terraform as part of Cloudfront+S3 module
+    bucketName: ${self:custom.bucketName.${opt:stage}, self:custom.bucketName.other}
+    manageResources: ${self:custom.manageResources.${opt:stage}, self:custom.manageResources:other}
+    distributionFolder: dist/lfx-insights
+    uploadOrder:
+      # Upload index.html last.
+      - .*
+      - index\.html
+    tags:
+      product: insights
+      component: frontend
+      env: ${ssm:lfx-insights-environment}
+    objectHeaders:
+      ALL_OBJECTS:
+        # Fallback, e.g. for image assets.
+        - name: Cache-Control
+          value: max-age=600, s-maxage=1209600
+      index.html:
+        # Browsers always re-request index.html.
+        - name: Cache-Control
+          value: must-revalidate, max-age=0, s-maxage=1209600
+      '*.????????????????*.*':
+        # Treat any file with a component longer than 20 chars as
+        # content-hashed (cache indefinitely).
+        - name: Cache-Control
+          value: max-age=31536000
+resources:
+  Conditions:
+    IsFeatureBranch:
+      Fn::Not:
+        - Fn::Or:
+            - Fn::Equals:
+                - ${opt:stage}
+                - dev
+            - Fn::Equals:
+                - ${opt:stage}
+                - production
+  Mappings:
+    stages:
+      dev:
+        static: true
+      production:
+        static: true
+  Resources:
+    Route53:
+      Type: AWS::Route53::RecordSet
+      Condition: IsFeatureBranch
+      Properties:
+        Name: ${self:custom.domain.${opt:stage}, self:custom.domain.other}
+        HostedZoneId: Z0657995358OOXVPLMU5H
+        Type: CNAME
+        TTL: 300
+        ResourceRecords:
+          - !GetAtt CloudFront.DomainName
+    CloudFront:
+      Condition: IsFeatureBranch
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Aliases:
+            - ${self:custom.domain.${opt:stage}, self:custom.domain.other}
+          Enabled: ${self:custom.manageResources.${opt:stage}, self:custom.manageResources.other}
+          DefaultCacheBehavior:
+            TargetOriginId: foo
+            ViewerProtocolPolicy: redirect-to-https
+            CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad # https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html
+            LambdaFunctionAssociations:
+              - EventType: origin-request
+                IncludeBody: false
+                LambdaFunctionARN: arn:aws:lambda:us-east-1:788942260905:function:cloudfront-spa-virtual-redirect:3
+          Origins:
+            - DomainName: lfx-insights-feature-branch-${opt:stage}.s3-website.us-east-2.amazonaws.com
+              Id: foo
+              CustomOriginConfig:
+                HTTPPort: 80
+                OriginProtocolPolicy: http-only
+          ViewerCertificate:
+            MinimumProtocolVersion: TLSv1
+            SslSupportMethod: sni-only
+            AcmCertificateArn: ${self:custom.certificateARN.${opt:stage}, self:custom.certificateARN.other}

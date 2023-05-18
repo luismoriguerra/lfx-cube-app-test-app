@@ -1,0 +1,37 @@
+# Copyright The Linux Foundation and each contributor to LFX.
+# SPDX-License-Identifier: MIT
+
+name: New Visualization Request
+description: Suggest a new Visualization for LFx Insights
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: d-description
+    attributes:
+      label: Visualization description.
+      description: Describe the new visualization, and it's use case. Why is this feature needed?
+    validations:
+      required: true
+  - type: textarea
+    id: d-data
+    attributes:
+      label: Describe expected data behind this visualization in more detail.
+      description: A detailed description of what the chart will show, calculations/function needed, or any mockups.
+    validations:
+      required: true
+  - type: textarea
+    id: d-filters
+    attributes:
+      label: Describe filters for this visualization.
+      description: How would this visualization work with the global filters, does it require any special filters?
+    validations:
+      required: true
+  - type: textarea
+    id: d-examples
+    attributes:
+      label: Examples
+      description: List examples, mockups, references.
+  - type: textarea
+    id: d-acceptance-criteria
+    attributes:
+      label: Acceptance Criteria

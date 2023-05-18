@@ -1,0 +1,18 @@
+{
+  "name": "lfx-crowddev-db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "chmod 600 .ssh/private_key",
+    "start": "node index.js",
+    "start:cube": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
+}

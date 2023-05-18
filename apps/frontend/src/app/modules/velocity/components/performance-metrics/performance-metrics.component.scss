@@ -1,0 +1,11 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+.card-content {
+  @apply bg-blue-light border border-b-4 border-b-transparent border-l-0 border-gray-fef p-7.5;
+  &:hover,
+  &.active-card {
+    @apply bg-white border-0 border-b-4 border-b-blue-499;
+  }
+}

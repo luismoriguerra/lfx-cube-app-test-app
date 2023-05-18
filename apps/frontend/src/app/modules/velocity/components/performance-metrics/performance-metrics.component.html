@@ -1,0 +1,66 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<div class="flex w-full justify-between pb-2.5 p-7.5 card-box-header">
+  <div>
+    <lfx-calculated-card-header class="block mb-2" [title]="'PERFORMANCE METRICS'"></lfx-calculated-card-header>
+
+    <div class="font-sans text-tiny text-gray-f83 mb-4">Analysis of software delivery performance based on deployment and failure rates.</div>
+    <ng-container [ngSwitch]="activeCardId">
+      <div *ngSwitchCase="0" class="font-sans text-base text-gray-dark">
+        Time to Merge (TTM) <span class="font-bold">increased 7%</span>
+        <span class="status-icon"> <fa-icon class="bg-green text-white rounded-md text-lg absolute px-[1px]" [icon]="['fas', 'chart-line']"> </fa-icon> </span>
+        compared to the previous time period.
+      </div>
+      <div *ngSwitchCase="1" class="font-sans text-base text-gray-dark">
+        Build frequency <span class="font-bold">improved by 22%</span>
+        <span class="status-icon">
+          <fa-icon class="bg-green text-white rounded-md text-lg absolute px-[1px]" [icon]="['fas', 'chart-line-down']"> </fa-icon>
+        </span>
+        compared with the previous time period.
+      </div>
+      <div *ngSwitchCase="2" class="font-sans text-base text-gray-dark">
+        Build failure rate <span class="font-bold">increased by 21%</span>
+        <span class="status-icon"> <fa-icon class="bg-red text-white rounded-md text-lg absolute px-[1px]" [icon]="['fas', 'chart-line']"> </fa-icon> </span>
+        compared to the previous time period.
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="flex justify-between">
+    <lfx-wip></lfx-wip>
+    <lfx-download [title]="cards[activeCardId].title" [visualization]="elementRef.nativeElement"></lfx-download>
+  </div>
+</div>
+
+<div class="flex flex-row card-box-group">
+  <div class="cards w-1/4 pr-[3%] card-box-tabs">
+    <div
+      *ngFor="let card of cards"
+      class="card-content"
+      [ngClass]="{ 'active-card': card.id === activeCardId }"
+      (click)="card.id === activeCardId ? false : updateActiveCard(card.id)">
+      <span class="text-sm text-gray-dark font-sans">{{ card.title }}</span>
+      <div class="font-sans text-xl text-gray-dark font-bold my-3">
+        {{ card.value }}
+        <span
+          class="text-11 ml-2"
+          [ngClass]="{
+            'text-green': card.changeFromPrevious > 0,
+            'text-red': card.changeFromPrevious <= 0
+          }">
+          {{ (card.changeFromPrevious > 0 ? '+' : '') + card.changeFromPrevious + '%' }}
+        </span>
+      </div>
+      <span class="text-tiny text-gray-pale font-sans">247 Total PRs</span>
+    </div>
+  </div>
+  <div class="w-3/4 pr-[5%] pl-[2%] card-box-tabs-content">
+    <ng-container [ngSwitch]="activeCardId">
+      <lfx-time-to-merge-pr *ngSwitchCase="0"></lfx-time-to-merge-pr>
+      <lfx-build-frequency *ngSwitchCase="1"></lfx-build-frequency>
+      <lfx-build-failure-rate *ngSwitchCase="2"></lfx-build-failure-rate>
+    </ng-container>
+  </div>
+</div>

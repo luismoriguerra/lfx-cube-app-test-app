@@ -1,0 +1,248 @@
+---
+# Copyright The Linux Foundation and each contributor to LFX.
+# SPDX-License-Identifier: MIT
+
+name: Deploy Production
+
+on:
+  # https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions
+  push:
+    tags:
+      - v*
+
+env:
+  STAGE: prod
+  AWS_REGION: us-east-2
+  AWS_ECR_REGION: us-east-2
+  REPOSITORY: lfx-insights-bff
+  ECR_HOST: ${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.us-east-2.amazonaws.com
+
+jobs:
+  deploy-bff:
+    runs-on: ubuntu-latest
+    environment: prod
+    name: Build & Deploy BFF
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Available Build Platforms
+        run: echo ${{ steps.buildx.outputs.platforms }}
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+          role-duration-seconds: 900
+
+      - name: Build Docker Image
+        id: build-docker
+        run: |
+          aws ecr get-login-password --region ${AWS_ECR_REGION} | docker login --username AWS --password-stdin ${ECR_HOST}
+
+          echo "Building image with tag: ${ECR_HOST}/${REPOSITORY}:${{github.sha}}"
+          docker buildx build --load --tag ${ECR_HOST}/${REPOSITORY}:${{github.sha}} .
+
+          echo "Pushing image with tag: ${ECR_HOST}/${REPOSITORY}:${{github.sha}}"
+          docker push ${ECR_HOST}/${REPOSITORY}:${{github.sha}}
+
+          echo "Building image with tag: ${ECR_HOST}/${REPOSITORY}:latest"
+          docker buildx build --load --tag ${ECR_HOST}/${REPOSITORY}:latest .
+
+          echo "Pushing image with tag: ${ECR_HOST}/${REPOSITORY}:latest"
+          docker push ${ECR_HOST}/${REPOSITORY}:latest
+
+      - name: Set Auth0 Variables
+        id: auth0-outputs
+        run: |
+          echo "auth0-client-id=$(aws ssm get-parameter --region us-east-2 --name lfx-insights-bff-auth0-client-id --query 'Parameter.Value' | tr -d \")" >> $GITHUB_OUTPUT
+          echo "auth0-domain=$(aws ssm get-parameter --region us-east-2 --name lfx-insights-bff-auth0-domain --query 'Parameter.Value' | tr -d \")" >> $GITHUB_OUTPUT
+          echo "::add-mask::$(aws ssm get-parameter --region us-east-2 --name lfx-insights-bff-auth0-client-secret --query 'Parameter.Value' | tr -d \")"
+          echo "auth0-client-secret=$(aws ssm get-parameter --region us-east-2 --name lfx-insights-bff-auth0-client-secret --query 'Parameter.Value' | tr -d \")" >> $GITHUB_OUTPUT
+
+      - name: Set Redis variables
+        id: redis-outputs
+        run: |
+          echo "redis-server-host=$(aws ssm get-parameter --region us-east-2 --name lfx-insights-bff-redis-servers --query 'Parameter.Value' | tr -d \")" >> $GITHUB_OUTPUT
+
+      - name: Set Datadog variables
+        id: datadog-outputs
+        run: |
+          echo "::add-mask::$(aws ssm get-parameter --region us-east-2 --name lfx-insights-bff-datadog-api-key --query 'Parameter.Value' | tr -d \")"
+          echo "dd-api-key=$(aws ssm get-parameter --region us-east-2 --name lfx-insights-bff-datadog-api-key --query 'Parameter.Value' | tr -d \")" >> $GITHUB_OUTPUT
+
+      - name: Create a new task revision
+        run: >
+          aws ecs register-task-definition --family lfx-insights-bff
+          --task-role-arn arn:aws:iam::${{secrets.AWS_ACCOUNT_ID}}:role/lfx-insights-bffTaskExecutionRole
+          --network-mode awsvpc
+          --cpu 1024
+          --memory 2048
+          --requires-compatibilities FARGATE
+          --execution-role-arn arn:aws:iam::${{secrets.AWS_ACCOUNT_ID}}:role/lfx-insights-bffTaskExecutionRole
+          --container-definitions '[
+            {
+              "name": "lfx-insights-bff",
+              "image": "${{secrets.AWS_ACCOUNT_ID}}.dkr.ecr.us-east-2.amazonaws.com/lfx-insights-bff:${{ github.sha }}",
+              "portMappings": [
+                {
+                  "containerPort": 8000,
+                  "hostPort": 8000,
+                  "protocol": "tcp"
+                }
+              ],
+              "essential": true,
+              "environment": [
+                {
+                  "name": "ENV",
+                  "value": "production"
+                },
+                {
+                  "name": "PORT",
+                  "value": "8000"
+                },
+                {
+                  "name": "API_HOST_URL",
+                  "value": "https://api-gw.platform.linuxfoundation.org/"
+                },
+                {
+                  "name": "AUTH0_ISSUER",
+                  "value": "https://sso.linuxfoundation.org/"
+                },
+                {
+                  "name": "AUTH0_AUDIENCE",
+                  "value": "https://api-gw.platform.linuxfoundation.org/"
+                },
+                {
+                  "name": "AUTH0_CLIENT_ID",
+                  "value": "${{steps.auth0-outputs.outputs.auth0-client-id}}"
+                },
+                {
+                  "name": "AUTH0_CLIENT_SECRET",
+                  "value": "${{steps.auth0-outputs.outputs.auth0-client-secret}}"
+                },
+                {
+                  "name": "AUTH0_DOMAIN",
+                  "value": "${{steps.auth0-outputs.outputs.auth0-domain}}"
+                },
+                {
+                  "name": "REDIS_HOST",
+                  "value": "${{steps.redis-outputs.outputs.redis-server-host}}"
+                }
+              ],
+              "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                  "awslogs-group": "/ecs/lfx-insights-bff-lfx-insights-bff-logs",
+                  "awslogs-region": "us-east-2",
+                  "awslogs-stream-prefix": "ecs"
+                }
+              }
+            },
+            {
+              "name": "dd-agent",
+              "environment": [
+                {
+                  "name": "DD_SERVICE",
+                  "value": "lfx-insights-bff"
+                },
+                {
+                  "name": "DD_ENV",
+                  "value": "production"
+                },
+                {
+                  "name": "ECS_FARGATE",
+                  "value": "true"
+                },
+                {
+                  "name": "DD_APM_ENABLED",
+                  "value": "true"
+                },
+                {
+                  "name": "DD_PROCESS_AGENT_ENABLED",
+                  "value": "true"
+                },
+                {
+                  "name": "DD_API_KEY",
+                  "value": "${{steps.datadog-outputs.outputs.dd-api-key}}"
+                }
+              ],
+              "essential": true,
+              "image": "datadog/agent:7.29.1",
+              "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                  "awslogs-group": "/ecs/lfx-insights-bff-lfx-insights-bff-agentlogs",
+                  "awslogs-region": "us-east-2",
+                  "awslogs-stream-prefix": "ecs"
+                }
+              }
+            }
+          ]'
+      - name: Update ECS Service with new task definition & deploy
+        run: |
+          aws ecs update-service --force-new-deployment --cluster lfx-insights-bff --service lfx-insights-bff --task-definition lfx-insights-bff
+
+  deploy-prod:
+    name: Build & Deploy UI
+    environment: prod
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.19.0"
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "name=dir::$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        run: |
+          npm config set '//npm.fontawesome.com/:_authToken' "${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}"
+          npm config set '//npm.pkg.github.com/:_authToken' "${{ secrets.LF_ENGINEERING_NPM_AUTH_TOKEN }}"
+
+      - name: Installing Packages
+        run: yarn install
+
+      - name: Datadog Variables
+        run: |
+          export DATADOG_APP_ID=${{ secrets.DATADOG_APP_ID }}
+          export DATADOG_TOKEN="${{ secrets.DATADOG_TOKEN }}"
+
+      - name: Building
+        run: yarn build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+          role-duration-seconds: 900
+
+      - name: Deploy Insights UI
+        run: |
+          yarn workspace frontend deploy --stage production --verbose
+          yarn workspace frontend deploy:client --stage production --verbose --no-confirm
+
+      - name: Invalidate Cloudfront Cache
+        run: |
+          aws cloudfront create-invalidation --paths "/*" --distribution-id ES4IFLVKO8FM2

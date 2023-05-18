@@ -1,0 +1,31 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+@import '@angular/material/theming';
+@include mat-core();
+
+$my-app-primary: mat-palette($mat-blue);
+$my-app-accent: mat-palette($mat-pink, 500, 900, A100);
+$my-app-warn: mat-palette($mat-deep-orange);
+$my-app-theme: mat-light-theme(
+  (
+    color: (
+      primary: $my-app-primary,
+      accent: $my-app-accent,
+      warn: $my-app-warn
+    ),
+    density: 0
+  )
+);
+@include angular-material-theme($my-app-theme);
+
+.mat-mdc-tab-labels {
+  .mdc-tab {
+    .mdc-tab-indicator {
+      span {
+        border-width: 2px;
+      }
+    }
+  }
+}

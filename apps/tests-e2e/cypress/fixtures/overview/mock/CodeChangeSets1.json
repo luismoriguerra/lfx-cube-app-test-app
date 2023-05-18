@@ -1,0 +1,126 @@
+{
+  "queryType": "regularQuery",
+  "results": [
+    {
+      "query": {
+        "segments": [
+          "CodeChangeSets.github_prs",
+          "CodeChangeSets.non_bots"
+        ],
+        "filters": [
+          {
+            "operator": "equals",
+            "values": [
+              "a0941000002wBz4AAE"
+            ],
+            "member": "CodeChangeSets.project_id"
+          }
+        ],
+        "measures": [
+          "CodeChangeSets.prs_count"
+        ],
+        "dimensions": [],
+        "timeDimensions": [
+          {
+            "dimension": "CodeChangeSets.pr_time",
+            "dateRange": [
+              "2022-04-14T00:00:00.000",
+              "2023-04-14T23:59:59.999"
+            ]
+          }
+        ],
+        "timezone": "UTC",
+        "order": [],
+        "limit": 10000,
+        "queryType": "regularQuery"
+      },
+      "data": [
+        {
+          "CodeChangeSets.prs_count": "3260"
+        }
+      ],
+      "lastRefreshTime": "2023-04-14T01:43:05.169Z",
+      "annotation": {
+        "measures": {
+          "CodeChangeSets.prs_count": {
+            "title": "Code Change Sets Prs Count",
+            "shortTitle": "Prs Count",
+            "type": "number",
+            "drillMembers": [
+              "CodeChangeSets.project_name",
+              "CodeChangeSets.repository_url",
+              "CodeChangeSets.role",
+              "CodeChangeSets.action",
+              "CodeChangeSets.pr_type",
+              "CodeChangeSets.is_bot",
+              "CodeChangeSets.pr_time"
+            ],
+            "drillMembersGrouped": {
+              "measures": [],
+              "dimensions": [
+                "CodeChangeSets.project_name",
+                "CodeChangeSets.repository_url",
+                "CodeChangeSets.role",
+                "CodeChangeSets.action",
+                "CodeChangeSets.pr_type",
+                "CodeChangeSets.is_bot",
+                "CodeChangeSets.pr_time"
+              ]
+            }
+          }
+        },
+        "dimensions": {},
+        "segments": {
+          "CodeChangeSets.github_prs": {
+            "title": "Code Change Sets Github Prs",
+            "shortTitle": "Github Prs"
+          },
+          "CodeChangeSets.non_bots": {
+            "title": "Code Change Sets Non Bots",
+            "shortTitle": "Non Bots"
+          }
+        },
+        "timeDimensions": {}
+      },
+      "dataSource": "redshiftlfx",
+      "dbType": "redshift",
+      "extDbType": "cubestore",
+      "external": false,
+      "slowQuery": false,
+      "total": null
+    }
+  ],
+  "pivotQuery": {
+    "segments": [
+      "CodeChangeSets.github_prs",
+      "CodeChangeSets.non_bots"
+    ],
+    "filters": [
+      {
+        "operator": "equals",
+        "values": [
+          "a0941000002wBz4AAE"
+        ],
+        "member": "CodeChangeSets.project_id"
+      }
+    ],
+    "measures": [
+      "CodeChangeSets.prs_count"
+    ],
+    "dimensions": [],
+    "timeDimensions": [
+      {
+        "dimension": "CodeChangeSets.pr_time",
+        "dateRange": [
+          "2022-04-14T00:00:00.000",
+          "2023-04-14T23:59:59.999"
+        ]
+      }
+    ],
+    "timezone": "UTC",
+    "order": [],
+    "limit": 10000,
+    "queryType": "regularQuery"
+  },
+  "slowQuery": false
+}

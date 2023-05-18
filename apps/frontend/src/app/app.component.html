@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+
+<div class="fixed w-full z-50 bg-blue-light">
+  <lfx-header-v2 id="lfx-header" userefreshtoken="true" use-request-id="true"></lfx-header-v2>
+</div>
+<div id="main-content" class="pt-[60px]">
+  <div id="app">
+    <div class="app-body">
+      <lfx-side-nav (toggleCollapsed)="toggleCollapsed()"></lfx-side-nav>
+      <div id="router-container" [ngClass]="{ 'ml-[225px]': !isCollapsed, 'ml-[70px]': isCollapsed }">
+        <div class="container">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loggedOut>
+  <lfx-header-v2 id="lfx-header"></lfx-header-v2>
+</ng-template>

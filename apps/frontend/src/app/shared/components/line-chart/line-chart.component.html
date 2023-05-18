@@ -1,0 +1,28 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+
+<div class="h-full w-full relative">
+  <!-- loading icon overlay  -->
+  <div class="absolute top-8 left-0 w-full h-full flex justify-center items-center" *ngIf="isLoading">
+    <lfx-loading></lfx-loading>
+  </div>
+  <!--  -->
+  <div *ngIf="!isLoading" class="flex flex-col h-full w-full">
+    <div [id]="chartName" class="flex-grow w-full"></div>
+    <div class="legend-wrap flex flex-row gap-8 justify-center" [ngClass]="{ hidden: noDate }" *ngIf="config.showLegend && !noDate && !noDataFound">
+      <span class="flex flex-row items-center font-sans text-tiny" *ngFor="let se of config.series">
+        <span class="legend-icon">
+          <span class="circle" [style]="{ borderColor: se.color }"></span>
+          <span class="line" [style]="{ borderColor: se.color }"></span>
+        </span>
+        {{ se.name }}
+      </span>
+    </div>
+  </div>
+  <div
+    *ngIf="annotations && config.annotationSettings"
+    [class]="'absolute flex flex-col annotation w-[190px] ' + config.annotationSettings.horizontalAlign + ' ' + config.annotationSettings.verticalAlign"
+    [innerHTML]="getAnnotationHTML(config.annotationSettings.template, annotations)"></div>
+</div>

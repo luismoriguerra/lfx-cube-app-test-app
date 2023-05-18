@@ -1,0 +1,16 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+
+.embed {
+  .details-col {
+    @apply basis-6/12 min-w-[140px];
+  }
+  .progress-val-col {
+    @apply basis-2/12 p-2 text-center bg-gray;
+  }
+  .progress-bar-col {
+    @apply basis-4/12;
+  }
+}

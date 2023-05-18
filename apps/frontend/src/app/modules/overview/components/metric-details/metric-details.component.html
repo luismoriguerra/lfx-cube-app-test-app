@@ -1,0 +1,37 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+<ng-container *ngFor="let item of getCurrentMetric(); let index = index">
+  <div *ngIf="(item.type === 'normal' && item.enabled) || item.type === 'list'" class="px-6 py-3.5 border-b border-b-0e0">
+    <div *ngIf="item.type === 'normal'">
+      <div class="flex">
+        <div class="mr-2 min-w-[60px] flex items-center">
+          <fa-icon *ngIf="index % 2 === 0" class="text-red-dark text-xl" [icon]="icons.faCircleXMark"></fa-icon>
+          <fa-icon *ngIf="index % 2 !== 0" class="text-green text-xl" [icon]="icons.faCircleCheck"></fa-icon>
+          <!-- <fa-icon class="text-xl text-gray-aaa ml-2" [icon]="icons.faFile"></fa-icon> -->
+          <span class="inline-block min-w-[50px] text-center">
+            <i class="text-xl text-gray-aaa" [class]="item.icon ? item.icon : 'far fa-file-alt'"></i>
+          </span>
+        </div>
+
+        <div class="text-tiny text-lf-gray-20-33">
+          <div class="font-bold font-sans">
+            {{ item.label }}
+          </div>
+          <div class="text-gray-dark">
+            {{ item.description }}
+            [check docs <fa-icon class="text-xs ml-1 relative bottom-1 text-gray-dark" [icon]="icons.faExtLink"></fa-icon>]
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ml-1 py-2.5" *ngIf="item.type === 'list'">
+      <ul>
+        <li class="text-sm" *ngFor="let listItem of item.data">
+          <div class="font-sans text-tiny text-gray-dark" [innerHTML]="listItem"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-container>

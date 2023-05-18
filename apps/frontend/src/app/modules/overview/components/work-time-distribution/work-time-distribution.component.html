@@ -1,0 +1,96 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+<div class="flex w-full justify-between p-[30px] pb-0">
+  <div class="pr-0 pb-2.5">
+    <lfx-calculated-card-header [tooltipTemplate]="tooltipTemplate" [title]="'WORK TIME DISTRIBUTION'"></lfx-calculated-card-header>
+    <div class="font-sans text-tiny text-gray-f83 my-3.5">
+      The time of day when technical contributions are being made. The hour breakdown is displayed based on your current timezone. You can select another
+      timezone to adjust the displayed metrics.
+    </div>
+    <div class="font-sans text-17 text-gray-dark">
+      Technical contributions during business hours in {{ selectedTimeZoneLabel }} {{ breakdowns.differenceFromPrevious !== '0%' ? 'are' : '' }}
+      <span class="font-bold">{{
+        breakdowns.differenceFromPrevious !== '0%' ? breakdowns.direction + ' ' + breakdowns.differenceFromPrevious : 'remained the same as'
+      }}</span>
+      <span class="status-icon" *ngIf="breakdowns.differenceFromPrevious !== '0%'">
+        <fa-icon
+          [ngClass]="{ 'bg-green': breakdowns.direction === 'up', 'bg-red': breakdowns.direction === 'down' }"
+          class="text-white rounded-md text-lg absolute px-[1px]"
+          [icon]="['fas', breakdowns.direction === 'up' ? 'chart-line' : 'chart-line-down']">
+        </fa-icon> </span
+      >. compared to the previous time period.
+    </div>
+  </div>
+
+  <div class="flex flex-col justify-between">
+    <lfx-download [title]="'work-time-distribution'" [visualization]="elementRef.nativeElement" [cardName]="chartName"></lfx-download>
+  </div>
+</div>
+<div class="flex items-center justify-end px-[30px]" data-html2canvas-ignore [formGroup]="form">
+  <!-- TODO enable once this is defined in PRD -->
+  <!-- <div class="flex mr-4 mt-4">
+    <label class="flex space-x-2 items-center cursor-pointer">
+      <input type="checkbox" class="lfx-checkbox" formControlName="githubOnly" /><span>Github Org Members</span>
+    </label>
+  </div> -->
+  <div class="flex flex-col w-[230px] mr-4">
+    <span class="text-tiny text-gray-dark font-semibold pb-1"> Timezone</span>
+    <ng-select
+      [items]="timezones"
+      bindValue="value"
+      formControlName="timezones"
+      [virtualScroll]="true"
+      [clearable]="false"
+      [searchable]="false"
+      class="custom-ng-select w-[230px]">
+    </ng-select>
+  </div>
+  <div class="flex flex-col w-[230px]">
+    <span class="text-tiny text-gray-dark font-semibold pb-1"> Metric</span>
+    <ng-select
+      [items]="metrics"
+      bindValue="value"
+      formControlName="metrics"
+      [virtualScroll]="true"
+      [clearable]="false"
+      [searchable]="false"
+      class="custom-ng-select w-[230px]">
+    </ng-select>
+  </div>
+</div>
+
+<div class="flex mt-5 p-[30px] pt-0">
+  <div class="w-1/4 flex flex-col">
+    <span class="text-gray-dark text-lg font-roboto mb-5 laptop:text-base"> BREAKDOWN </span>
+    <div class="flex flex-col mb-5">
+      <span class="text-gray-dark text-2.5xl font-sans font-bold laptop:text-2.25xl">{{ breakdowns.business }}</span>
+      <span class="text-base font-sans text-gray-pale">Business Hours</span>
+      <span class="text-base font-sans text-gray-pale">{{ formatTime(businessStart, ':00') }} to {{ formatTime(businessEnd, ':00') }}</span>
+    </div>
+    <div class="flex flex-col mb-5">
+      <span class="text-gray-dark text-2.5xl font-sans font-bold laptop:text-2.25xl">{{ breakdowns.evenings }}</span>
+      <span class="text-base font-sans text-gray-pale">Non-Business Hours</span>
+      <span class="text-base font-sans text-gray-pale">{{ formatTime(businessEnd, ':01') }} to {{ formatTime(businessStart - 1, ':59') }}</span>
+    </div>
+    <div class="flex flex-col mb-5">
+      <span class="text-gray-dark text-2.5xl font-sans font-bold laptop:text-2.25xl">{{ breakdowns.weekends }}</span>
+      <span class="text-base font-sans text-gray-pale">Weekends</span>
+    </div>
+  </div>
+  <div class="flex justify-center w-full">
+    <lfx-heat-chart class="w-full" [chartName]="chartName" [config]="config" [data]="heatmapData" *ngIf="!isLoading; else loading"></lfx-heat-chart>
+  </div>
+</div>
+
+<ng-template #tooltipTemplate>
+  <div class="absolute bottom-[120%] left-[15%] font-sans rounded-md bg-gray-dark text-xs text-white w-[266px] p-4">
+    Calculated using the CHAOSS metric for Activity Dates and Times.
+    <a class="hover:underline text-primary" href="https://chaoss.community/kb/metric-activity-dates-and-times/">Learn More</a>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <lfx-loading></lfx-loading>
+</ng-template>

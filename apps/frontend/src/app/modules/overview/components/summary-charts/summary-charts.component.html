@@ -1,0 +1,170 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<div class="lg:grid-cols-3 xl:grid-cols-6 group-tabs grid gap-4 grid-cols-[repeat(auto-fit,minmax(min(155px,100%),1fr))]">
+  <lfx-summary-charts-tab
+    [active]="'Contributors' === summaryContentActive"
+    (click)="setContentActive('Contributors')"
+    [icon]="['fal', 'user']"
+    [title]="'Contributors'"
+    [mainValue]="contributorsTotal"
+    [secondaryValue]="contributionsVariation"
+    [secondaryValueColorType]="contributionsVariationCategory"
+    [chartName]="'Contributors' + '-mini'"
+    [isDummyData]="true"
+    [config]="contributorsMicroThemeConfig">
+    <lfx-line-chart [config]="contributorsMicroThemeConfig" [chartName]="'Contributors' + '-mini'"></lfx-line-chart>
+  </lfx-summary-charts-tab>
+  <lfx-summary-charts-tab
+    [active]="'Commits' === summaryContentActive"
+    (click)="setContentActive('Commits')"
+    [icon]="['fal', 'code-commit']"
+    [title]="'Commits'"
+    [mainValue]="commitsTotal"
+    [secondaryValue]="commitsVariation"
+    [secondaryValueColorType]="commitsVariationCategory"
+    [chartName]="'Commits' + '-mini'"
+    [isDummyData]="true"
+    [config]="contributorsMicroThemeConfig">
+    <lfx-bar-chart [config]="commitsChartConfigMicro" [chartName]="'Commits' + '-mini'"></lfx-bar-chart>
+  </lfx-summary-charts-tab>
+
+  <lfx-summary-charts-tab
+    [active]="'Issues' === summaryContentActive"
+    (click)="setContentActive('Issues')"
+    [icon]="['fal', 'code-commit']"
+    [title]="'Issues'"
+    [mainValue]="issuesTotal"
+    [secondaryValue]="issuesVariation"
+    [secondaryValueColorType]="issuesVariationCategory"
+    [chartName]="'Issues' + '-mini'"
+    [config]="contributorsMicroThemeConfig">
+    <lfx-line-chart [config]="issuesChartConfigMicro" [chartName]="'Issues' + '-mini'"></lfx-line-chart>
+  </lfx-summary-charts-tab>
+
+  <lfx-summary-charts-tab
+    [active]="'Pull Requests' === summaryContentActive"
+    (click)="setContentActive('Pull Requests')"
+    [icon]="['fal', 'code-merge']"
+    [title]="'Pull Requests'"
+    [mainValue]="pullRequestsTotal"
+    [secondaryValue]="pullRequestsVariation"
+    [secondaryValueColorType]="pullRequestsVariationCategory"
+    [chartName]="'Pull-Requests' + '-mini'"
+    [config]="pullRequestsChartConfigMicro">
+    <lfx-line-chart [config]="pullRequestsChartConfigMicro" [chartName]="'Pull-Requests' + '-mini'"></lfx-line-chart>
+  </lfx-summary-charts-tab>
+
+  <lfx-summary-charts-tab
+    [active]="'Forks' === summaryContentActive"
+    (click)="setContentActive('Forks')"
+    [icon]="['fal', 'code-branch']"
+    [title]="'Forks'"
+    [mainValue]="forksTotal"
+    [secondaryValue]="forksVariation"
+    [secondaryValueColorType]="forksVariationCategory"
+    [chartName]="'Forks' + '-mini'"
+    [config]="contributorsMicroThemeConfig">
+    <lfx-bar-chart [config]="forksChartConfigMicro" [chartName]="'Forks' + '-mini'"></lfx-bar-chart>
+  </lfx-summary-charts-tab>
+
+  <lfx-summary-charts-tab
+    [active]="'stars' === summaryContentActive"
+    (click)="setContentActive('stars')"
+    [icon]="['fal', 'star']"
+    [title]="'stars'"
+    [mainValue]="starsTotal"
+    [secondaryValue]="starsVariation"
+    [secondaryValueColorType]="starsVariationCategory"
+    [chartName]="'stars' + '-mini'"
+    [config]="contributorsMicroThemeConfig">
+    <lfx-line-chart [config]="starsChartConfigMicro" [chartName]="'stars' + '-mini'"></lfx-line-chart>
+  </lfx-summary-charts-tab>
+</div>
+<div class="separator mb-4"></div>
+<div class="group-content">
+  <lfx-summary-charts-content-item
+    *ngIf="'Contributors' === summaryContentActive"
+    [title]="'Contributors'"
+    [subtitle]="'Total number of people contributing to a project'"
+    [descriptionP1]="'Contributors'"
+    [descriptionP2]="contributionsFullChartDescription"
+    [descriptionP3]="' compared to the previous time period.'"
+    [chartName]="'Contributors' + '-full'"
+    [iconType]="contributionsVariationCategory"
+    [isDummyData]="true"
+    [chartWikiLink]="'https://github.com/LF-Engineering/lfx-insights-ui/wiki/Contributors-chart'"
+    [config]="contributorsConfig">
+    <lfx-line-chart [config]="contributorsConfig" [chartName]="'Contributors' + '-full'"></lfx-line-chart>
+  </lfx-summary-charts-content-item>
+
+  <lfx-summary-charts-content-item
+    *ngIf="'Commits' === summaryContentActive"
+    [title]="'Commits'"
+    subtitle="Number of commits performed during selected time period."
+    descriptionP1="Total commits"
+    [descriptionP2]="commitsFullChartDescription"
+    descriptionP3=" in comparison to the previous time period."
+    [chartName]="'Commits' + '-full'"
+    [iconType]="commitsVariationCategory"
+    [isDummyData]="true"
+    [chartWikiLink]="'https://github.com/LF-Engineering/lfx-insights-ui/wiki/Commits-chart'"
+    [config]="contributorsConfig">
+    <lfx-bar-chart [config]="commitsChartConfig" [chartName]="'Commits' + '-full'"></lfx-bar-chart>
+  </lfx-summary-charts-content-item>
+  <lfx-summary-charts-content-item
+    *ngIf="'Issues' === summaryContentActive"
+    [title]="'Issues'"
+    subtitle="Number of issues performed during selected time period."
+    descriptionP1="The number of issues that were closed"
+    [descriptionP2]="issuesFullChartDescription"
+    descriptionP3=" compared to the previous time period."
+    [chartName]="'Issues' + '-full'"
+    [iconType]="issuesVariationCategory"
+    [chartWikiLink]="'https://github.com/LF-Engineering/lfx-insights-ui/wiki/Issues-chart'"
+    [config]="contributorsConfig">
+    <lfx-line-chart [config]="issuesChartConfig" [chartName]="'Issues' + '-full'"></lfx-line-chart>
+  </lfx-summary-charts-content-item>
+  <lfx-summary-charts-content-item
+    *ngIf="'Forks' === summaryContentActive"
+    [title]="'Forks'"
+    subtitle="Total number of copies made of project repositories."
+    descriptionP1="Fork activity"
+    [descriptionP2]="forksFullChartDescription"
+    descriptionP3=" compared to the previous time period."
+    [chartName]="'Forks' + '-full'"
+    [iconType]="forksVariationCategory"
+    [chartWikiLink]="'https://github.com/LF-Engineering/lfx-insights-ui/wiki/Forks-chart'"
+    [config]="contributorsConfig">
+    <lfx-bar-chart [config]="forksChartConfig" [chartName]="'Forks' + '-full'"></lfx-bar-chart>
+  </lfx-summary-charts-content-item>
+
+  <lfx-summary-charts-content-item
+    *ngIf="'Pull Requests' === summaryContentActive"
+    [title]="'Pull Requests'"
+    [subtitle]="'Number of pull request performed during selected time period'"
+    [descriptionP1]="'Pull request activity'"
+    [descriptionP2]="pullRequestsFullChartDescription"
+    [descriptionP3]="' compared to the previous time period.'"
+    [chartName]="'Pull-Requests' + '-full'"
+    [iconType]="pullRequestsVariationCategory"
+    [chartWikiLink]="'https://github.com/LF-Engineering/lfx-insights-ui/wiki/Pull-Requests-chart'"
+    [config]="pullRequestsChartConfig">
+    <lfx-line-chart [config]="pullRequestsChartConfig" [chartName]="'Pull-Requests' + '-full'"></lfx-line-chart>
+  </lfx-summary-charts-content-item>
+
+  <lfx-summary-charts-content-item
+    *ngIf="'stars' === summaryContentActive"
+    [title]="'stars'"
+    subtitle="Number of stars added to a repository."
+    descriptionP1="Number of stars"
+    [descriptionP2]="starsFullChartDescription"
+    descriptionP3=" compared to the previous time period."
+    [chartName]="'stars' + '-full'"
+    [iconType]="starsVariationCategory"
+    [chartWikiLink]="'https://github.com/LF-Engineering/lfx-insights-ui/wiki/Stars-chart'"
+    [config]="contributorsConfig">
+    <lfx-line-chart [config]="starsChartConfig" [chartName]="'stars' + '-full'"></lfx-line-chart>
+  </lfx-summary-charts-content-item>
+</div>

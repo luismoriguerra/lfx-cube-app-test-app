@@ -1,0 +1,11 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+
+<div *ngIf="isLoading || innerLoading" class="loader flex items-center justify-center min-h-[380px] relative">
+  <div class="flex justify-center absolute -mt-10 -ml-4 top-3/4 left-1/2">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+<div [hidden]="isLoading || innerLoading" [id]="chartName" [ngStyle]="{ height: config.height + 'px' }"></div>

@@ -1,0 +1,152 @@
+{
+  "root": false,
+  "ignorePatterns": [
+    "projects/**/*",
+    "**/*.spec.ts",
+    "**/*-routing.module.ts",
+    "src/main.ts",
+    "src/main.server.ts",
+    "src/polyfills.ts",
+    "src/test.ts",
+    "src/app/ssrRouter.ts"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["**/tsconfig.json"],
+        "sourceType": "module",
+        "createDefaultProgram": true
+      },
+      "parser": "@typescript-eslint/parser",
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        // "no-unused-vars": "off",
+        "no-forward-ref": "off",
+        // "@typescript-eslint/no-unused-vars": ["error"],
+        "@angular-eslint/component-max-inline-declarations": "error",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "default",
+            "format": ["camelCase"]
+          },
+          {
+            "selector": "variable",
+            "format": ["camelCase", "UPPER_CASE"]
+          },
+          {
+            "selector": "parameter",
+            "format": ["camelCase"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "memberLike",
+            "modifiers": ["private"],
+            "format": ["camelCase"]
+          },
+          {
+            "selector": "typeLike",
+            "format": ["PascalCase"]
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "lfx",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/no-attribute-decorator": "error",
+        "@angular-eslint/no-forward-ref": "error",
+        "@angular-eslint/no-lifecycle-call": "error",
+        "@angular-eslint/no-pipe-impure": "error",
+        "@angular-eslint/no-queries-metadata-property": "error",
+        "@angular-eslint/prefer-output-readonly": "error",
+        "@angular-eslint/use-component-selector": "error",
+        "@angular-eslint/use-component-view-encapsulation": "error",
+        "@typescript-eslint/no-extraneous-class": "off",
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/unbound-method": "off",
+        "class-methods-use-this": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/no-internal-modules": "off",
+        "import/no-unassigned-import": "off",
+        "import/order": "error",
+        "no-constant-condition": "off",
+        "no-empty": "error",
+        "comma-dangle": "off",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/explicit-member-accessibility": "warn",
+        "no-console": "off",
+        "no-restricted-syntax": [
+          "error",
+          {
+            "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(warn|error|info|trace)$/]",
+            "message": "Only warn, error, info and trace allowed to be committed into code"
+          }
+        ],
+        "max-len": [
+          "error",
+          {
+            "code": 160,
+            "ignoreUrls": true
+          }
+        ],
+        "no-else-return": "error",
+        "array-bracket-spacing": "error",
+        "block-spacing": [2, "always"],
+        "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+        "comma-spacing": [2, { "before": false, "after": true }],
+        "no-whitespace-before-property": "error",
+        "radix": "off",
+        "@typescript-eslint/member-ordering": [
+          2,
+          {
+            "default": [
+              "decorated-field", // = ["public-decorated-field", "protected-decorated-field", "private-decorated-field"]
+              "field",
+              "public-constructor",
+              "public-method", // = ["public-static-method", "public-instance-method"]
+              "protected-method", // = ["protected-static-method", "protected-instance-method"]
+              "private-method" // = ["private-static-method", "private-instance-method"]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "@angular-eslint/template/cyclomatic-complexity": "off"
+      },
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      }
+    },
+    {
+      "files": ["*.d.ts"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "off",
+        "max-len": "off"
+      }
+    }
+  ]
+}

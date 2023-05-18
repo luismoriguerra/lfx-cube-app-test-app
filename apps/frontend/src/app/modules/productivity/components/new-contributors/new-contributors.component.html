@@ -1,0 +1,60 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+<div class="flex w-full justify-between p-[30px]">
+  <div>
+    <lfx-calculated-card-header [title]="'NEW CONTRIBUTORS'"></lfx-calculated-card-header>
+    <div class="font-sans text-tiny text-gray-f83 my-3.5">
+      Contributors who make their first contributions (Commits, Issues, Pull Requests) to the Project are classified as "New Contributors"
+    </div>
+    <div class="font-sans text-base text-gray-dark">
+      Commits are <span class="font-bold">up</span>
+      <span class="status-icon"> <fa-icon class="bg-green text-white rounded-md text-lg absolute px-[1px]" [icon]="['fas', 'chart-line']"> </fa-icon> </span>
+      by 13% against the previous time period.
+    </div>
+  </div>
+
+  <div class="flex justify-between">
+    <lfx-wip></lfx-wip>
+    <lfx-download [title]="'new-contributors'" [visualization]="elementRef.nativeElement"></lfx-download>
+  </div>
+</div>
+
+<lfx-table [tableConfiguration]="tableConfiguration" [maxHeight]="520" [tableRecords]="tableRecords"></lfx-table>
+
+<ng-template #numberTemplate let-element>
+  <span class="block text-tiny text-gray-dark text-center w-full">
+    {{ element.rowData[element.columnConfig.key] | lfxShortNumber }}
+  </span>
+</ng-template>
+
+<ng-template #githubNameTemplate let-element>
+  <span class="block text-tiny text-gray-dark font-sans font-bold text-left w-full hover:text-primary">
+    <div class="grid grid-cols-[min-content,1fr] items-center gap-4">
+      <div>
+        <span class="rounded-full w-[32px] h-[32px] grid place-content-center border border-gray-fef bg-white text-gray-dark text-tiny hover:shadow-sm">
+          {{ element.rowData?.name | firstLetters }}
+        </span>
+      </div>
+      <div class="flex flex-wrap flex-1">
+        {{ element.rowData?.githubUsername }}
+      </div>
+    </div>
+  </span>
+</ng-template>
+
+<ng-template #contributionsTemplate let-element>
+  <div class="block text-tiny text-gray-dark text-center w-full">
+    <span>
+      {{ element.rowData[element.columnConfig.key].value }}
+    </span>
+    <span
+      [ngClass]="{
+        'text-green': element.rowData[element.columnConfig.key].changeFromPrevious > 0,
+        'text-red': element.rowData[element.columnConfig.key].changeFromPrevious <= 0
+      }">
+      ({{ (element.rowData[element.columnConfig.key].changeFromPrevious > 0 ? '+' : '') + element.rowData[element.columnConfig.key].changeFromPrevious }})
+    </span>
+  </div>
+</ng-template>

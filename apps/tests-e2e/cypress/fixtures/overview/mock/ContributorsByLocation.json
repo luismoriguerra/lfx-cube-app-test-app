@@ -1,0 +1,169 @@
+{
+  "queryType": "regularQuery",
+  "results": [
+    {
+      "query": {
+        "measures": [
+          "ContributorsByLocation.contributor_count"
+        ],
+        "timeDimensions": [
+          {
+            "dimension": "ContributorsByLocation.contributionDate",
+            "dateRange": [
+              "2022-04-14T00:00:00.000",
+              "2023-04-14T23:59:59.999"
+            ]
+          }
+        ],
+        "order": [
+          {
+            "id": "ContributorsByLocation.contributor_count",
+            "desc": true
+          }
+        ],
+        "dimensions": [
+          "ContributorsByLocation.countryCode",
+          "ContributorsByLocation.countryName"
+        ],
+        "filters": [
+          {
+            "operator": "equals",
+            "values": [
+              "kubernetes/kubernetes"
+            ],
+            "member": "ContributorsByLocation.repository"
+          }
+        ],
+        "timezone": "UTC",
+        "limit": 10000,
+        "queryType": "regularQuery"
+      },
+      "data": [
+        {
+          "ContributorsByLocation.countryCode": "US",
+          "ContributorsByLocation.countryName": "United States",
+          "ContributorsByLocation.contributor_count": "1001"
+        },
+        {
+          "ContributorsByLocation.countryCode": "IN",
+          "ContributorsByLocation.countryName": "India",
+          "ContributorsByLocation.contributor_count": "800"
+        },
+        {
+          "ContributorsByLocation.countryCode": "CN",
+          "ContributorsByLocation.countryName": "China",
+          "ContributorsByLocation.contributor_count": "701"
+        },
+        {
+          "ContributorsByLocation.countryCode": "UK",
+          "ContributorsByLocation.countryName": "United Kingdom",
+          "ContributorsByLocation.contributor_count": "501"
+        },
+        {
+          "ContributorsByLocation.countryCode": "AU",
+          "ContributorsByLocation.countryName": "Australia",
+          "ContributorsByLocation.contributor_count": "201"
+        },
+        {
+          "ContributorsByLocation.countryCode": "CA",
+          "ContributorsByLocation.countryName": "Canada",
+          "ContributorsByLocation.contributor_count": "151"
+        },
+        {
+          "ContributorsByLocation.countryCode": "BR",
+          "ContributorsByLocation.countryName": "Brasil",
+          "ContributorsByLocation.contributor_count": "101"
+        },
+        {
+          "ContributorsByLocation.countryCode": "ZA",
+          "ContributorsByLocation.countryName": "South Africa",
+          "ContributorsByLocation.contributor_count": "31"
+        }
+      ],
+      "lastRefreshTime": "2023-04-14T06:56:16.580Z",
+      "annotation": {
+        "measures": {
+          "ContributorsByLocation.contributor_count": {
+            "title": "Contributors by Location Contributor Count",
+            "shortTitle": "Contributor Count",
+            "type": "number",
+            "drillMembers": [
+              "ContributorsByLocation.countryCode",
+              "ContributorsByLocation.countryName",
+              "ContributorsByLocation.repository",
+              "ContributorsByLocation.project",
+              "ContributorsByLocation.contributionDate"
+            ],
+            "drillMembersGrouped": {
+              "measures": [],
+              "dimensions": [
+                "ContributorsByLocation.countryCode",
+                "ContributorsByLocation.countryName",
+                "ContributorsByLocation.repository",
+                "ContributorsByLocation.project",
+                "ContributorsByLocation.contributionDate"
+              ]
+            }
+          }
+        },
+        "dimensions": {
+          "ContributorsByLocation.countryCode": {
+            "title": "Contributors by Location Country Code",
+            "shortTitle": "Country Code",
+            "type": "string"
+          },
+          "ContributorsByLocation.countryName": {
+            "title": "Contributors by Location Country Name",
+            "shortTitle": "Country Name",
+            "type": "string"
+          }
+        },
+        "segments": {},
+        "timeDimensions": {}
+      },
+      "dataSource": "default",
+      "dbType": "postgres",
+      "extDbType": "cubestore",
+      "external": false,
+      "slowQuery": false,
+      "total": null
+    }
+  ],
+  "pivotQuery": {
+    "measures": [
+      "ContributorsByLocation.contributor_count"
+    ],
+    "timeDimensions": [
+      {
+        "dimension": "ContributorsByLocation.contributionDate",
+        "dateRange": [
+          "2022-04-14T00:00:00.000",
+          "2023-04-14T23:59:59.999"
+        ]
+      }
+    ],
+    "order": [
+      {
+        "id": "ContributorsByLocation.contributor_count",
+        "desc": true
+      }
+    ],
+    "dimensions": [
+      "ContributorsByLocation.countryCode",
+      "ContributorsByLocation.countryName"
+    ],
+    "filters": [
+      {
+        "operator": "equals",
+        "values": [
+          "kubernetes/kubernetes"
+        ],
+        "member": "ContributorsByLocation.repository"
+      }
+    ],
+    "timezone": "UTC",
+    "limit": 10000,
+    "queryType": "regularQuery"
+  },
+  "slowQuery": false
+}

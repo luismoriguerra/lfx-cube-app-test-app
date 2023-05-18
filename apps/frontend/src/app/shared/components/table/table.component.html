@@ -1,0 +1,134 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+<div class="relative" [ngStyle]="{ 'min-height': maxHeight + 'px' }" data-html2canvas-ignore>
+  <ng-container *ngIf="tableConfiguration && !tableConfiguration.isLoading && !tableConfiguration.error && !isLoading; else loadingTemplate">
+    <div class="w-full flex flex-col bg-white">
+      <div class="flex items-end w-full">
+        <span
+          class="flex items-center text-gray-dark text-tiny font-semibold font-sans py-4 column-header-element"
+          [ngStyle]="{
+            minWidth: column.width ? column.width : '',
+            maxWidth: column.width ? column.width : '',
+            'padding-left': first ? '0' : '10px',
+            'padding-right': last ? '0' : '10px'
+          }"
+          [ngClass]="column.headerCssClass"
+          *ngFor="let column of tableConfiguration.columns; let first = first; let last = last; let index = index">
+          {{ column.title }}
+          <i
+            class="fas fa-sort-up mt-1.5 ml-2.5 text-primary cursor-pointer"
+            [ngClass]="{ 'fa-sort-up': tableConfiguration.isDesc, 'fa-sort-down': !tableConfiguration.isDesc }"
+            (click)="changeSort(column)"
+            *ngIf="column.sortable && column.title === tableConfiguration.sortedBy"></i>
+        </span>
+      </div>
+      <div class="flex flex-col max-h-[520px] overflow-auto w-full" [ngStyle]="{ 'max-height': maxHeight + 'px' }">
+        <ng-container *ngIf="tableRecords?.length; else noDataTemplate">
+          <div
+            class="flex w-full bg-white py-3 border-t border-gray hover:bg-blue/10"
+            [ngClass]="{ '!bg-odd': rowIndex % 2 === 0 }"
+            *ngFor="let row of tableRecords; let rowIndex = index">
+            <div
+              [ngClass]="column.columnCssClass"
+              [ngStyle]="{
+                minWidth: column.width ? column.width : '',
+                maxWidth: column.width ? column.width : '',
+                'padding-left': first ? '0' : '10px',
+                'padding-right': last ? '0' : '10px'
+              }"
+              *ngFor="let column of tableConfiguration.columns; let first = first; let last = last; let index = index">
+              <ng-container
+                *ngIf="column.template"
+                [ngTemplateOutlet]="column.template"
+                [ngTemplateOutletContext]="{
+                  $implicit: {
+                    columnConfig: column,
+                    rowData: row,
+                    rowIndex: rowIndex
+                  }
+                }">
+              </ng-container>
+              <ng-container *ngIf="!column.template">
+                <span class="text-gray-dark text-tiny font-normal font-sans">
+                  {{ row[column.key] }}
+                </span>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #loadingTemplate>
+    <lfx-loading></lfx-loading>
+  </ng-template>
+
+  <ng-template #noDataTemplate>
+    <!-- <div class="text-[20px] font-bold text-black flex h-full w-full items-center justify-center min-h-[180px]">No data to display</div> -->
+    <div class="am5-modal" style="display: block">
+      <div class="am5-modal-curtain"></div>
+      <div class="am5-modal-wrapper"><div class="am5-modal-content">No data to display</div></div>
+    </div>
+  </ng-template>
+</div>
+
+<div
+  class="w-full flex h-fit flex-col bg-white hidden table-component-container"
+  *ngIf="tableConfiguration && !tableConfiguration.isLoading && !tableConfiguration.error && !isLoading">
+  <div class="flex items-end w-full">
+    <span
+      class="flex items-center text-gray-dark text-tiny font-semibold font-sans py-4 column-header-element"
+      [ngStyle]="{
+        minWidth: column.width ? column.width : '',
+        maxWidth: column.width ? column.width : '',
+        'padding-left': first ? '0' : '10px',
+        'padding-right': last ? '0' : '10px'
+      }"
+      [ngClass]="column.headerCssClass"
+      *ngFor="let column of tableConfiguration.columns; let first = first; let last = last; let index = index">
+      {{ column.title }}
+      <i
+        class="fas fa-sort-up mt-1.5 ml-2.5 text-primary cursor-pointer"
+        [ngClass]="{ 'fa-sort-up': tableConfiguration.isDesc, 'fa-sort-down': !tableConfiguration.isDesc }"
+        (click)="changeSort(column)"
+        *ngIf="column.sortable && column.title === tableConfiguration.sortedBy"></i>
+    </span>
+  </div>
+  <div class="flex flex-col w-full">
+    <ng-container *ngIf="tableRecords?.length; else noDataTemplate">
+      <div
+        class="flex w-full bg-white py-3 border-t border-gray hover:bg-blue/10"
+        [ngClass]="{ '!bg-odd': rowIndex % 2 === 0 }"
+        *ngFor="let row of tableRecords; let rowIndex = index">
+        <div
+          [ngClass]="column.columnCssClass"
+          [ngStyle]="{
+            minWidth: column.width ? column.width : '',
+            maxWidth: column.width ? column.width : '',
+            'padding-left': first ? '0' : '10px',
+            'padding-right': last ? '0' : '10px'
+          }"
+          *ngFor="let column of tableConfiguration.columns; let first = first; let last = last; let index = index">
+          <ng-container
+            *ngIf="column.template"
+            [ngTemplateOutlet]="column.template"
+            [ngTemplateOutletContext]="{
+              $implicit: {
+                columnConfig: column,
+                rowData: row,
+                rowIndex: rowIndex
+              }
+            }">
+          </ng-container>
+          <ng-container *ngIf="!column.template">
+            <span class="text-gray-dark text-tiny font-normal font-sans">
+              {{ row[column.key] }}
+            </span>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

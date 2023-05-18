@@ -1,0 +1,13 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+.side-menu {
+  @apply fixed p-4 overflow-y-auto h-full;
+  .menu-item {
+    @apply cursor-pointer py-2 px-2.5 mb-2 rounded-full hover:bg-gray-efe text-sm;
+    &.active {
+      @apply bg-blue-pale hover:bg-blue-pale font-bold;
+    }
+  }
+}

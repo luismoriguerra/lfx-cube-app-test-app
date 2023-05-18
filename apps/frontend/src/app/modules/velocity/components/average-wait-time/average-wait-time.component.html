@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+  -->
+<div>
+  <div class="mb-2 relative">
+    <lfx-calculated-card-header [title]="'AVERAGE WAIT TIME FOR 1ST REVIEW'"></lfx-calculated-card-header>
+
+    <div class="absolute top-0 right-0 flex justify-between">
+      <lfx-wip></lfx-wip>
+      <lfx-download [title]="'average-wait-time-for-1st-review'" [visualization]="elementRef.nativeElement"></lfx-download>
+    </div>
+  </div>
+  <div class="text-gray-f83 text-tiny mb-3 min-h-[39px]">Time it takes for code changes to be integrated, built, tested and deployed.</div>
+  <div class="text-base mb-4">
+    Average wait time is
+
+    <span class="font-bold">up 14%</span>
+    <span class="status-icon">
+      <fa-icon class="bg-yellow text-white rounded-md text-lg absolute px-[1px] px-[1px]" [icon]="['fas', 'chart-line']"> </fa-icon>
+    </span>
+    compared to the previous time period..
+  </div>
+  <div id="commitsPerDay" class="w-full h-[380px] pt-16">
+    <lfx-bar-chart [config]="config" chartName="AverageWaitTime1stReview"></lfx-bar-chart>
+  </div>
+</div>

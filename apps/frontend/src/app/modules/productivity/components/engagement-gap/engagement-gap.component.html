@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright The Linux Foundation and each contributor to LFX.
+  ~ SPDX-License-Identifier: MIT
+-->
+<div class="flex w-full justify-between pb-2.5">
+  <div>
+    <lfx-calculated-card-header [title]="'ENGAGEMENT GAP'"></lfx-calculated-card-header>
+    <div class="font-sans text-tiny text-gray-f83 my-3.5">
+      The difference between the loudest voice (most comments by a single contributor) and the quietest voice (lowest comments by a contributor).
+    </div>
+    <div class="font-sans text-base text-gray-dark">
+      The average engagement gap is <span class="font-bold">up 14%</span>
+      <span class="status-icon"> <fa-icon class="bg-yellow text-white rounded-md text-lg absolute px-[1px]" [icon]="['fas', 'chart-line']"> </fa-icon> </span>
+      compared to the previous time period.
+    </div>
+  </div>
+
+  <div class="flex justify-between">
+    <lfx-wip></lfx-wip>
+    <lfx-download [title]="'engagement-gap'" [visualization]="elementRef.nativeElement"></lfx-download>
+  </div>
+</div>
+
+<div class="w-full h-[380px]">
+  <lfx-line-chart [chartName]="chartName" [config]="config"></lfx-line-chart>
+</div>
+<!-- <div class="absolute flex flex-col top-0 left-[15%] annotation w-[190px]">
+    <span class="text-gray-dark text-2.5xl font-bold font-sans">9x <span class="text-sm font-normal text-red">+14%</span></span>
+    <span class="text-gray-pale text-base font-sans">Average Gap</span>
+  </div> -->

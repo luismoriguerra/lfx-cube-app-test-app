@@ -1,0 +1,41 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+
+.input-container {
+  @apply relative;
+  &.hasIcon {
+    input {
+      @apply pr-8 pl-4 sm:pl-8;
+    }
+    .input-icon {
+      @apply absolute left-[10px] top-1/2 -mt-[15px] text-lg opacity-80 text-gray-dark;
+    }
+
+    .clear-icon {
+      @apply absolute cursor-pointer right-[10px] top-1/2 -mt-[15px] text-lg opacity-80 text-gray-dark;
+    }
+  }
+  label {
+    span {
+      &.required {
+        @apply text-red;
+      }
+    }
+  }
+
+  input {
+    @apply transition border-solid appearance-none border rounded-md px-4 w-full leading-tight py-2 outline-0 box-border text-tiny;
+
+    &.ng-dirty {
+      &.ng-invalid {
+        @apply border-red;
+      }
+    }
+
+    &::placeholder {
+      @apply text-tiny;
+    }
+  }
+}

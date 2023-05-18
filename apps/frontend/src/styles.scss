@@ -1,0 +1,52 @@
+/*!
+ * Copyright The Linux Foundation and each contributor to LFX.
+ * SPDX-License-Identifier: MIT
+ */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* You can add global styles to this file, and also import other style files */
+@import 'material-theme';
+@import 'container';
+@import 'buttons';
+@import 'forms';
+
+html,
+body {
+  @apply bg-blue-light h-full;
+}
+body {
+  @apply m-0 font-roboto text-gray-dark;
+  font-family: 'Open Sans', 'Roboto Slab', sans-serif;
+}
+
+.custom-ng-select {
+  .ng-select-container {
+    @apply w-full py-1.5 text-gray-dark bg-white text-tiny border border-gray rounded m-0 cursor-pointer focus:text-gray-dark focus:outline-none focus:border-gray focus:shadow-none disabled:opacity-60 disabled:bg-white;
+  }
+
+  &.ng-select-disabled > .ng-select-container {
+    @apply bg-white text-opacity-60;
+  }
+
+  .ng-option {
+    &.ng-option-selected {
+      @apply bg-white text-primary hover:bg-gray-9f9/90 focus:bg-gray-9f9/90;
+    }
+    @apply text-tiny text-gray-dark cursor-pointer py-2 hover:bg-gray-9f9/90 focus:bg-gray-9f9/90;
+  }
+}
+.status-icon {
+  @apply mx-1 relative inline-block w-6 h-6;
+}
+
+@layer utilities {
+  .debug-resp {
+    @apply bg-red-50 md:bg-blue-50 lg:bg-green-50 xl:bg-gray-300 2xl:bg-amber-200;
+  }
+}
