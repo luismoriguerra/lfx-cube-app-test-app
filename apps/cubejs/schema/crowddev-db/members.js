@@ -11,7 +11,11 @@ cube(`Members`, {
     "joinedAt",
     "attributes" -> 'avatarUrl' ->>'github' "logo_url",
     "attributes" -> 'country' ->> 'enrichment' as "contributor_country"
-  FROM members`,
+  FROM members
+  WHERE 1=1
+  AND ${FILTER_PARAMS.PullRequestsOverview.created_at.filter('joinedAt')}
+  AND ${FILTER_PARAMS.TestView.created_at.filter('joinedAt')} 
+  `,
   joins: {},
   measures: {
     count: {
@@ -20,18 +24,18 @@ cube(`Members`, {
     },
   },
   preAggregations: {
-    main: {
-      measures: [Members.count],
-      dimensions: [Members.contributor_country, Members.tenantId],
-      refreshKey: {
-        every: `1 day`,
-        updateWindow: `7 day`,
-        incremental: true,
-      },
-      partitionGranularity: `year`,
-      timeDimension: Members.joinedAt,
-      granularity: `day`,
-    },
+    // main: {
+    //   measures: [Members.count],
+    //   dimensions: [Members.contributor_country, Members.tenantId],
+    //   refreshKey: {
+    //     every: `1 day`,
+    //     updateWindow: `7 day`,
+    //     incremental: true,
+    //   },
+    //   partitionGranularity: `year`,
+    //   timeDimension: Members.joinedAt,
+    //   granularity: `day`,
+    // },
   },
   dimensions: {
     id: {
@@ -67,7 +71,7 @@ cube(`Members`, {
       sql: `"usernameOld"`,
       type: `string`,
     },
-    tenantId: {
+    tenant_id: {
       sql: `"tenantId"`,
       type: `string`,
     },

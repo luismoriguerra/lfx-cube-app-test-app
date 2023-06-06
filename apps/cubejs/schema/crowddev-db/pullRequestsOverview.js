@@ -25,6 +25,7 @@ cube("PullRequestsOverview", {
     id: {
       sql: "id",
       type: "string",
+      primaryKey: true
     },
     type: {
       sql: "type",

@@ -12,7 +12,16 @@
 cube(`Tenants`, {
   sql: `SELECT id,name FROM tenants`,
 
-  joins: {},
+  joins: {
+    PullRequestsOverview: {
+      sql: `${CUBE.id} = ${PullRequestsOverview.tenant_id}`,
+      relationship: `one_to_many`
+    },
+    Members: {
+      sql: `${CUBE.id} = ${Members.tenant_id}`,
+      relationship: `one_to_many`
+    },
+  },
 
   preAggregations: {
     main: {
@@ -43,6 +52,7 @@ cube(`Tenants`, {
       sql: `id`,
       type: `string`,
       primaryKey: true,
+      shown: true
     },
 
     name: {
